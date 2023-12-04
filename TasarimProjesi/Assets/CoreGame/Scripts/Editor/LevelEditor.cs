@@ -111,7 +111,7 @@ namespace Editor
             if (_selectedLevel != _backupSelectedLevel) // if selected any level
             {
                 _backupSelectedLevel = _selectedLevel;
-                //ClearArea();
+                ClearArea();
 
                 if (_selectedLevel > 0)
                 {
@@ -145,6 +145,19 @@ namespace Editor
                 }
             }
             #endregion
+        }
+
+        private void ClearArea()
+        {
+            for (int i = 0; i < _cellsTextures.Length; i++)
+            {
+                _cellsTextures[i] = null;
+            }
+        }
+        private void AllClear()
+        {
+            //ClearArea();
+            //_level.Reset();
         }
 
         private void LoadMainCellTexturesFromLevels()

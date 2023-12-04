@@ -1,4 +1,5 @@
 ﻿using RunTime.Datas.UnityObjects;
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -21,6 +22,8 @@ namespace Editor
         private GUIStyle _seperatorLabelStyle;
         private int _backupSelectedLevel;
         private CD_Level _level;
+        private GUIStyle _titleLabelStyle;
+        private GUIStyle _lowSeperatorLabelStyle;
         private readonly List<Texture> _editorTextures = new();
 
 
@@ -66,6 +69,58 @@ namespace Editor
                 GetLevels();
             }
             #endregion
+
+            Seperator();
+
+            #region Object Features
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Object Features", _titleLabelStyle);
+
+            if (GUILayout.Button("Clear Object Features", new GUIStyle(GUI.skin.button) { fixedWidth = 150, margin = new RectOffset(0, 20, 7, 10) }))
+            {
+                //ClearObjectFeatures();
+            }
+            EditorGUILayout.EndHorizontal();
+
+            try
+            {
+                LowSeperator();
+
+                #region Texture Array
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("Get Objects"))
+                {
+                    //FixTextures(_objectString);
+                }
+                if (GUILayout.Button("Get Blocks"))
+                {
+                    //FixTextures(_blockString);
+                }
+                EditorGUILayout.EndHorizontal();
+                #endregion
+
+
+                //_selectedTexture = EditorGUILayout.IntSlider("Selected Object", _selectedTexture, 0, _editorTextures.ToArray().Length - 1);
+
+                //_ = (Texture)EditorGUILayout.ObjectField(_editorTextures[_selectedTexture] != null ? _editorTextures[_selectedTexture].name : "Empty", _editorTextures[_selectedTexture], typeof(Texture), false);
+            }
+            catch (Exception)
+            {
+                //if (isPressedBlocks)
+                //{
+                //    FixTextures(_blockString);
+                //}
+                //else
+                //{
+                //    FixTextures(_objectString);
+                //}
+                //EditorGUILayout.LabelField("------------------", _middleLabelStyle);
+            }
+
+
+            #endregion
+
 
             EditorGUILayout.EndScrollView(); // Scroll End
 
@@ -126,7 +181,14 @@ namespace Editor
         }
         private void Seperator()
         {
+            EditorGUILayout.Space(10);
             EditorGUILayout.LabelField(_separator, _seperatorLabelStyle);
+            EditorGUILayout.Space(10);
+
+        }
+        private void LowSeperator()
+        {
+            EditorGUILayout.LabelField(_separator, _lowSeperatorLabelStyle);
         }
         private void GetLevels()
         {
@@ -143,10 +205,20 @@ namespace Editor
         public void AdjustLabelsStyles()
         {
             _seperatorLabelStyle = new GUIStyle();
-            _seperatorLabelStyle.normal.textColor = Color.white;
+            _seperatorLabelStyle.normal.textColor = Color.cyan;
             _seperatorLabelStyle.fontSize = 18;
             _seperatorLabelStyle.alignment = TextAnchor.MiddleLeft;
             _seperatorLabelStyle.fontStyle = FontStyle.Bold;
+
+            _lowSeperatorLabelStyle = new GUIStyle();
+            _lowSeperatorLabelStyle.normal.textColor = Color.gray;
+            _lowSeperatorLabelStyle.fontSize = 18;
+            _lowSeperatorLabelStyle.alignment = TextAnchor.MiddleLeft;
+
+            _titleLabelStyle = new GUIStyle();
+            _titleLabelStyle.normal.textColor = Color.white;
+            _titleLabelStyle.fontSize = 18;
+            _titleLabelStyle.alignment = TextAnchor.MiddleCenter;
         }
         private void HandleOnClickedAnyCell()
         {

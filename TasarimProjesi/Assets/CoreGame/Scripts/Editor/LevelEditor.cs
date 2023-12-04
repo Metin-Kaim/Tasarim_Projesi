@@ -62,6 +62,11 @@ namespace Editor
 
             _selectedCell = GUILayout.SelectionGrid(-1, _cellsTextures, _col, _cellStyle); // Select any cell
 
+            if (GUILayout.Button("Clear Grid"))
+            {
+                AllClear();
+            }
+
             Seperator();
 
             #region Select Level From DropDown
@@ -156,8 +161,8 @@ namespace Editor
         }
         private void AllClear()
         {
-            //ClearArea();
-            //_level.Reset();
+            ClearArea();
+            _level?.Reset();
         }
 
         private void LoadMainCellTexturesFromLevels()

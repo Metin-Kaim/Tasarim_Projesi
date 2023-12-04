@@ -8,5 +8,13 @@ namespace RunTime.Datas.UnityObjects
     public class CD_Level : ScriptableObject
     {
         public LevelEntities LevelEntities;
+
+        public void Reset()
+        {
+            for (int i = 0; i < LevelEntities.ObjectsList.Count; i++)
+            {
+                LevelEntities.ObjectsList[i] = 0;
+            }
+        }
     }
 }

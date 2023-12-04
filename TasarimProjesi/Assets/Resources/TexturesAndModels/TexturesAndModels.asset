@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8dcbda0d569844e807d596308ea8bb, type: 3}
+  m_Name: TexturesAndModels
+  m_EditorClassIdentifier: 
+  ObjectDatas:
+  - ObjectType: 0
+    TextureData: {fileID: 0}
+    ObjectData: {fileID: 0}
+  - ObjectType: 1
+    TextureData: {fileID: 2800000, guid: 69925d15d80417e40aa74c11ec0105d2, type: 3}
+    ObjectData: {fileID: 2869402261734119329, guid: 77214a7613e95604b92d1b0e8632fe4f, type: 3}
+  - ObjectType: 2
+    TextureData: {fileID: 2800000, guid: 3684b0767f8d90c4daa82af4e0dec8d6, type: 3}
+    ObjectData: {fileID: 5003211336846090419, guid: 0000369b35525d24687a329fc1e42ae1, type: 3}
+  - ObjectType: 3
+    TextureData: {fileID: 2800000, guid: 089c6d36de2a67b4a8a3fa636d641602, type: 3}
+    ObjectData: {fileID: 3410921643860631840, guid: 507edc2508c25e14c8c7a3947ef69391, type: 3}
+  - ObjectType: 4
+    TextureData: {fileID: 2800000, guid: 0ae0e5843d0624d4e89c3ef66606172c, type: 3}
+    ObjectData: {fileID: 5702678374181287704, guid: 703f29810c512964997a453968015cd1, type: 3}
+  - ObjectType: 5
+    TextureData: {fileID: 2800000, guid: 6927109bf76fe7143921870fa7e36b6d, type: 3}
+    ObjectData: {fileID: 7589667893212823564, guid: 5e818a0414eb54748bef89dba69426e2, type: 3}
+  - ObjectType: 6
+    TextureData: {fileID: 2800000, guid: 4f80e4e1fa19922489182c13a906e812, type: 3}
+    ObjectData: {fileID: 9048597547687291292, guid: 1cd68b4b6a64b0f4991f73d725cf0ce3, type: 3}
+  - ObjectType: 7
+    TextureData: {fileID: 2800000, guid: 1b1a50c45f7340f4a8f9f60ec8dc906b, type: 3}
+    ObjectData: {fileID: 5834986003518582529, guid: 6bbe1ca5504e9fd49961cbd1636be106, type: 3}

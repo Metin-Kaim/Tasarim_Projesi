@@ -1,4 +1,5 @@
 ﻿using RunTime.Datas.UnityObjects;
+using RunTime.Enums;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
@@ -24,7 +25,10 @@ namespace Editor
         private CD_Level _level;
         private GUIStyle _titleLabelStyle;
         private GUIStyle _lowSeperatorLabelStyle;
-        private readonly List<Texture> _editorTextures = new();
+        private int _selectedTexture;
+        private CD_TexturesAndModels _texturesAndModels;
+        private readonly List<Texture> _objectsTextures = new();
+        private readonly List<string> _objectsNames = new();
 
 
         [MenuItem("Tools/Level Editor")]
@@ -48,6 +52,7 @@ namespace Editor
                 AdjustCell();
                 GetLevels();
                 AdjustLabelsStyles();
+                FixTextures();
 
                 //Debug.Log($"row: {_row}, col: {_col}");
             }
@@ -83,40 +88,11 @@ namespace Editor
             }
             EditorGUILayout.EndHorizontal();
 
-            try
-            {
-                LowSeperator();
+            LowSeperator();
 
-                #region Texture Array
-                EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("Get Objects"))
-                {
-                    //FixTextures(_objectString);
-                }
-                if (GUILayout.Button("Get Blocks"))
-                {
-                    //FixTextures(_blockString);
-                }
-                EditorGUILayout.EndHorizontal();
-                #endregion
+            _selectedTexture = EditorGUILayout.IntSlider("Selected Object", _selectedTexture, 0, _objectsTextures.ToArray().Length - 1);
 
-
-                //_selectedTexture = EditorGUILayout.IntSlider("Selected Object", _selectedTexture, 0, _editorTextures.ToArray().Length - 1);
-
-                //_ = (Texture)EditorGUILayout.ObjectField(_editorTextures[_selectedTexture] != null ? _editorTextures[_selectedTexture].name : "Empty", _editorTextures[_selectedTexture], typeof(Texture), false);
-            }
-            catch (Exception)
-            {
-                //if (isPressedBlocks)
-                //{
-                //    FixTextures(_blockString);
-                //}
-                //else
-                //{
-                //    FixTextures(_objectString);
-                //}
-                //EditorGUILayout.LabelField("------------------", _middleLabelStyle);
-            }
+            _ = (Texture)EditorGUILayout.ObjectField(_objectsTextures[_selectedTexture] != null ? _objectsNames[_selectedTexture] : "Empty", _objectsTextures[_selectedTexture], typeof(Sprite), false);
 
 
             #endregion
@@ -143,7 +119,7 @@ namespace Editor
 
                     if (_level.LevelEntities.ObjectsList.Count == _row * _col)
                     {
-                        //LoadMainCellTexturesFromLevels();
+                        LoadMainCellTexturesFromLevels();
                     }
                     else // calculate level's data's count
                     {
@@ -171,12 +147,30 @@ namespace Editor
             #endregion
         }
 
+        private void LoadMainCellTexturesFromLevels()
+        {
+            for (int i = 0; i < _row * _col; i++)
+            {
+                if (_level.LevelEntities.ObjectsList[i] != 0)
+                {
+                    for (int j = 0; j < _texturesAndModels.ObjectDatas.Length; j++)
+                    {
+                        if (_texturesAndModels.ObjectDatas[j].ObjectType == _level.LevelEntities.ObjectsList[i])
+                        {
+                            _cellsTextures[i] = _texturesAndModels.ObjectDatas[j].TextureData;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         private void AdjustCell()
         {
             _cellStyle = new(GUI.skin.button)
             {
-                fixedWidth = 30, // Width of buttons
-                fixedHeight = 30 // Height of buttons
+                fixedWidth = 40, // Width of buttons
+                fixedHeight = 40 // Height of buttons
             };
         }
         private void Seperator()
@@ -222,11 +216,39 @@ namespace Editor
         }
         private void HandleOnClickedAnyCell()
         {
-            Debug.Log(_selectedCell);
+            _cellsTextures[_selectedCell] = _objectsTextures[_selectedTexture];
+
+            if (_selectedLevel <= 0) return; // if selected level zero (choose level)
+
+            if (_objectsTextures[_selectedTexture] != null) // any object selected
+            {
+                _level.LevelEntities.ObjectsList[_selectedCell] = ((ObjectsEnum[])Enum.GetValues(typeof(ObjectsEnum)))[_selectedTexture];
+            }
+            else
+            {
+                _level.LevelEntities.ObjectsList[_selectedCell] = 0;
+            }
         }
         private CD_Level GetLevel()
         {
             return Resources.Load<CD_Level>($"Levels/Level {_selectedLevel}");
+        }
+        private void FixTextures()
+        {
+            _texturesAndModels = Resources.Load<CD_TexturesAndModels>("TexturesAndModels/TexturesAndModels");
+
+            if (_objectsTextures.Count > 0)
+            {
+                _objectsTextures.Clear();
+            }
+
+            int length = _texturesAndModels.ObjectDatas.Length;
+
+            for (int i = 0; i < length; i++)
+            {
+                _objectsTextures.Add(_texturesAndModels.ObjectDatas[i].TextureData);
+                _objectsNames.Add(_texturesAndModels.ObjectDatas[i].ObjectType.ToString());
+            }
         }
     }
 }

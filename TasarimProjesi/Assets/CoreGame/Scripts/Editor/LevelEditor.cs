@@ -95,13 +95,19 @@ namespace Editor
 
             LowSeperator();
 
-            _selectedTexture = EditorGUILayout.IntSlider("Selected Object", _selectedTexture, 0, _objectsTextures.ToArray().Length - 1);
+            try
+            {
+                _selectedTexture = EditorGUILayout.IntSlider("Selected Object", _selectedTexture, 0, _objectsTextures.ToArray().Length - 1);
 
-            _ = (Texture)EditorGUILayout.ObjectField(_objectsTextures[_selectedTexture] != null ? _objectsNames[_selectedTexture] : "Empty", _objectsTextures[_selectedTexture], typeof(Sprite), false);
+                _ = (Texture)EditorGUILayout.ObjectField(_objectsTextures[_selectedTexture] != null ? _objectsNames[_selectedTexture] : "Empty", _objectsTextures[_selectedTexture], typeof(Sprite), false);
 
+                _isStatic = EditorGUILayout.ToggleLeft(_isStatic ? "  Static" : "  UnStatic", _isStatic);
 
-            //EditorGUILayout.LabelField("Is Static");
-            _isStatic = EditorGUILayout.ToggleLeft(_isStatic ? "  Static" : "  UnStatic", _isStatic);
+            }
+            catch (Exception)
+            {
+                FixTextures();
+            }
 
             #endregion
 

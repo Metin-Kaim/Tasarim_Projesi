@@ -13,4 +13,166 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   LevelEntities:
-    ObjectsList: 
+    ObjectsList:
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 2
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 0
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0
+    - ObjectType: 1
+      IsStatic: 0

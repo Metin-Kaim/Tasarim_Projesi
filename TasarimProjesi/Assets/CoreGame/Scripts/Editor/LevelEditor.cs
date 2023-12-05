@@ -29,7 +29,7 @@ namespace Editor
         private CD_TexturesAndModels _texturesAndModels;
         private readonly List<Texture> _objectsTextures = new();
         private readonly List<string> _objectsNames = new();
-
+        private bool _isStatic;
 
         [MenuItem("Tools/Level Editor")]
         static void ShowWindow()
@@ -89,7 +89,7 @@ namespace Editor
 
             if (GUILayout.Button("Clear Object Features", new GUIStyle(GUI.skin.button) { fixedWidth = 150, margin = new RectOffset(0, 20, 7, 10) }))
             {
-                //ClearObjectFeatures();
+                ClearObjectFeatures();
             }
             EditorGUILayout.EndHorizontal();
 
@@ -99,6 +99,9 @@ namespace Editor
 
             _ = (Texture)EditorGUILayout.ObjectField(_objectsTextures[_selectedTexture] != null ? _objectsNames[_selectedTexture] : "Empty", _objectsTextures[_selectedTexture], typeof(Sprite), false);
 
+
+            //EditorGUILayout.LabelField("Is Static");
+            _isStatic = EditorGUILayout.ToggleLeft(_isStatic ? "  Static" : "  UnStatic", _isStatic);
 
             #endregion
 
@@ -152,6 +155,12 @@ namespace Editor
             #endregion
         }
 
+        private void ClearObjectFeatures()
+        {
+            _selectedTexture = 0;
+            _isStatic = false;
+        }
+
         private void ClearArea()
         {
             for (int i = 0; i < _cellsTextures.Length; i++)
@@ -169,11 +178,11 @@ namespace Editor
         {
             for (int i = 0; i < _row * _col; i++)
             {
-                if (_level.LevelEntities.ObjectsList[i] != 0)
+                if (_level.LevelEntities.ObjectsList[i].ObjectType != 0)
                 {
                     for (int j = 0; j < _texturesAndModels.ObjectDatas.Length; j++)
                     {
-                        if (_texturesAndModels.ObjectDatas[j].ObjectType == _level.LevelEntities.ObjectsList[i])
+                        if (_texturesAndModels.ObjectDatas[j].ObjectType == _level.LevelEntities.ObjectsList[i].ObjectType)
                         {
                             _cellsTextures[i] = _texturesAndModels.ObjectDatas[j].TextureData;
                             break;
@@ -240,11 +249,12 @@ namespace Editor
 
             if (_objectsTextures[_selectedTexture] != null) // any object selected
             {
-                _level.LevelEntities.ObjectsList[_selectedCell] = ((ObjectsEnum[])Enum.GetValues(typeof(ObjectsEnum)))[_selectedTexture];
+                _level.LevelEntities.ObjectsList[_selectedCell].SetFeatures(((ObjectsEnum[])Enum.GetValues(typeof(ObjectsEnum)))[_selectedTexture], _isStatic);
             }
             else
             {
-                _level.LevelEntities.ObjectsList[_selectedCell] = 0;
+                _level.LevelEntities.ObjectsList[_selectedCell].Reset();
+
             }
         }
         private CD_Level GetLevel()

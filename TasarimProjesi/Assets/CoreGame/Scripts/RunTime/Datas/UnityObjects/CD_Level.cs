@@ -13,7 +13,7 @@ namespace RunTime.Datas.UnityObjects
         {
             for (int i = 0; i < LevelEntities.ObjectsList.Count; i++)
             {
-                LevelEntities.ObjectsList[i] = 0;
+                LevelEntities.ObjectsList[i].Reset();
             }
         }
     }

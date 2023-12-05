@@ -5,8 +5,8 @@ using System.Collections.Generic;
 namespace RunTime.Datas.ValueObjects
 {
     [System.Serializable]
-    public struct LevelEntities
+    public class LevelEntities
     {
-        public List<ObjectsEnum> ObjectsList;
+        public List<EntityFeatures> ObjectsList;
     }
 }

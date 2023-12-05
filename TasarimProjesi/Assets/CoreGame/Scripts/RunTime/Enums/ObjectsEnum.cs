@@ -3,13 +3,14 @@ namespace RunTime.Enums
 {
     public enum ObjectsEnum
     {
-        None, 
-        Candy1, 
+        None,
+        Tile,
+        Candy1 = 10,
         Candy2, 
         Candy3, 
         Candy4, 
-        Rocket,
-        Bomb,
-        Box
+        Rocket = 20,
+        Bomb = 25,
+        Box = 30
     }
 }

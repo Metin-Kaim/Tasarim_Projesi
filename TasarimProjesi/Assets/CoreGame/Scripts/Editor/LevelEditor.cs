@@ -255,7 +255,7 @@ namespace Editor
 
             if (_objectsTextures[_selectedTexture] != null) // any object selected
             {
-                _level.LevelEntities.ObjectsList[_selectedCell].SetFeatures(((ObjectsEnum[])Enum.GetValues(typeof(ObjectsEnum)))[_selectedTexture], _isStatic);
+                _level.LevelEntities.ObjectsList[_selectedCell].SetFeatures(_texturesAndModels.ObjectDatas[_selectedTexture].ObjectType, _isStatic);
             }
             else
             {

@@ -1,6 +1,12 @@
-﻿using RunTime.Datas.UnityObjects;
+﻿using RunTime.Abstracts.Entities;
+using RunTime.Datas.UnityObjects;
+using RunTime.Enums;
+using RunTime.Handlers;
 using RunTime.Signals;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace RunTime.Managers
@@ -10,9 +16,11 @@ namespace RunTime.Managers
         public int Row { get; private set; }
         public int Column { get; private set; }
 
-        public Transform GridContainer;
-        public GameObject TilePrefab;
-        public List<GameObject> TileList;
+        [SerializeField] private Transform gridContainer;
+        [SerializeField] private GameObject tilePrefab;
+        [SerializeField] private List<GameObject> tileList;
+        [SerializeField] private GameObject[] objectsArray;
+
         private CD_Level _currentLevel;
 
         private void Awake()
@@ -33,29 +41,55 @@ namespace RunTime.Managers
 
         public void CreateGrid()
         {
-            int counter = -1;
+            int objID = -1;
             float cellDistance = .75f;
 
-            //GridContainer.transform.position = new(0, 0, 0);
-
-            for (int i = 0; i < Row; i++)
+            for (int r = 0; r < Row; r++)
             {
-                GameObject currentRow = new($"Row {i}");
-                //currentRow.transform.position = Vector3.zero;
-                currentRow.transform.SetParent(GridContainer);
-                currentRow.transform.localPosition = new Vector3(0, -(cellDistance * i), 0);
+                GameObject currentRow = new($"Row {r}");
+                currentRow.transform.SetParent(gridContainer);
+                currentRow.transform.localPosition = new Vector3(0, -(cellDistance * r), 0);
 
-                for (int j = 0; j < Column; j++)
+                for (int c = 0; c < Column; c++)
                 {
-                    counter++;
+                    objID++;
+                    if (_currentLevel.LevelEntities.ObjectsList[objID].ObjectType == 0) continue;
 
-                    if (_currentLevel.LevelEntities.ObjectsList[counter].ObjectType == 0) continue;
+                    GameObject currentTile = SpawnTile(cellDistance, currentRow, objID, r, c);
 
-                    GameObject currentTile = Instantiate(TilePrefab, currentRow.transform);
-                    currentTile.transform.localPosition = new(cellDistance * j, 0, 0);
-                    currentTile.name = $"Tile {i}-{j}";
+                    if (!_currentLevel.LevelEntities.ObjectsList[objID].IsStatic)
+                    {
+                        SpawnObject(currentTile, objID, r, c);
+                    }
+                    else
+                    {
+                        SpawnObject(currentTile, _currentLevel.LevelEntities.ObjectsList[objID].ObjectType, objID, r, c);
+                    }
+
+
                 }
             }
+        }
+
+        private void SpawnObject(GameObject currentTile, int id, int row, int col)
+        {
+            GameObject newObject = Instantiate(objectsArray[Random.Range(0, objectsArray.Length)], currentTile.transform);
+            newObject.GetComponent<AbsEntity>().SetFeatures(id, row, col);
+        }
+        private void SpawnObject(GameObject currentTile, ObjectsEnum objectType, int id, int row, int col) // Her objeye özel script yaz
+        {
+            GameObject newObject = Instantiate(objectsArray.FirstOrDefault(x => x.GetComponent<AbsEntity>().ObjectType == objectType), currentTile.transform);
+        }
+        private GameObject SpawnTile(float cellDistance, GameObject currentRow, int id, int row, int col)
+        {
+            GameObject currentTile = Instantiate(tilePrefab, currentRow.transform);
+            currentTile.transform.localPosition = new(cellDistance * col, 0, 0);
+            currentTile.name = $"Tile {row}-{col}";
+            currentTile.GetComponent<AbsEntity>().SetFeatures(id, row, col);
+
+            tileList.Add(currentTile);
+
+            return currentTile;
         }
     }
 }

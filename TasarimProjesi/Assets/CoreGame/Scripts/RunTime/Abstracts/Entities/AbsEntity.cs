@@ -15,6 +15,7 @@ namespace RunTime.Abstracts.Entities
         public int Column { get => _column; set => _column = value; }
         public EntitiesEnum ObjectType => _objectType;
 
+
         public void SetFeatures(int id, int row, int column)
         {
             Id = id;
@@ -22,11 +23,5 @@ namespace RunTime.Abstracts.Entities
             Column = column;
         }
 
-        private void OnMouseDown()
-        {
-            OnTouch();
-        }
-
-        protected abstract void OnTouch();
     }
 }

@@ -2,11 +2,11 @@
 
 namespace RunTime.Handlers
 {
-    public class RocketHandler : AbsEntity
+    public class RocketHandler : AbsEntity, ITouchable
     {
-        protected override void OnTouch()
+        public void OnMouseDown()
         {
-            throw new System.NotImplementedException();
+            print("Rocket");
         }
     }
 }

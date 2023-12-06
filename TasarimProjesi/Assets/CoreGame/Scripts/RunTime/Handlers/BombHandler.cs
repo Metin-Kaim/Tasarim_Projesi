@@ -2,11 +2,11 @@
 
 namespace RunTime.Handlers
 {
-    public class BombHandler : AbsEntity
+    public class BombHandler : AbsEntity, ITouchable
     {
-        protected override void OnTouch()
+        public void OnMouseDown()
         {
-            throw new System.NotImplementedException();
+            print("Bomb");
         }
     }
 }

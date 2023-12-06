@@ -2,11 +2,11 @@
 
 namespace RunTime.Handlers
 {
-    public class CandyHandler : AbsEntity
+    public class CandyHandler : AbsEntity, ITouchable
     {
-        protected override void OnTouch()
+        public void OnMouseDown()
         {
-            throw new System.NotImplementedException();
+            print("Candy");
         }
     }
 }

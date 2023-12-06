@@ -124,7 +124,39 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
+    - EntityType: 30
+      IsStatic: 0
+    - EntityType: 30
+      IsStatic: 0
     - EntityType: 10
+      IsStatic: 0
+    - EntityType: 30
+      IsStatic: 0
+    - EntityType: 30
+      IsStatic: 0
+    - EntityType: 30
+      IsStatic: 0
+    - EntityType: 30
+      IsStatic: 0
+    - EntityType: 30
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 25
+      IsStatic: 0
+    - EntityType: 25
+      IsStatic: 0
+    - EntityType: 25
+      IsStatic: 0
+    - EntityType: 25
+      IsStatic: 0
+    - EntityType: 25
+      IsStatic: 0
+    - EntityType: 25
+      IsStatic: 0
+    - EntityType: 25
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
@@ -132,47 +164,15 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 20
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 20
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 20
       IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
+    - EntityType: 20
       IsStatic: 0

@@ -2,11 +2,11 @@
 
 namespace RunTime.Handlers
 {
-    public class BoxHandler : AbsEntity
+    public class BoxHandler : AbsEntity, ITouchable
     {
-        protected override void OnTouch()
+        public void OnMouseDown()
         {
-            throw new System.NotImplementedException();
+            print("Box");
         }
     }
 }

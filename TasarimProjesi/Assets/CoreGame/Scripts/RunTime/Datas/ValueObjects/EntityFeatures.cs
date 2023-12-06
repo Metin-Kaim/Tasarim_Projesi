@@ -6,17 +6,17 @@ namespace RunTime.Datas.ValueObjects
     [System.Serializable]
     public class EntityFeatures
     {
-        public ObjectsEnum ObjectType;
+        public EntitiesEnum EntityType;
         public bool IsStatic;
 
-        public void SetFeatures(ObjectsEnum ObjectType, bool IsStatic)
+        public void SetFeatures(EntitiesEnum EntityTpye, bool IsStatic)
         {
-            this.ObjectType = ObjectType;
+            this.EntityType = EntityTpye;
             this.IsStatic = IsStatic;
         }
         public void Reset()
         {
-            ObjectType = ObjectsEnum.None;
+            EntityType = EntitiesEnum.None;
             IsStatic = false;
         }
     }

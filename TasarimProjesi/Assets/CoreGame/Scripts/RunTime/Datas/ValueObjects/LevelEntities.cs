@@ -7,6 +7,6 @@ namespace RunTime.Datas.ValueObjects
     [System.Serializable]
     public class LevelEntities
     {
-        public List<EntityFeatures> ObjectsList;
+        public List<EntityFeatures> EntitiesList;
     }
 }

@@ -13,166 +13,166 @@ MonoBehaviour:
   m_Name: Level 1
   m_EditorClassIdentifier: 
   LevelEntities:
-    ObjectsList:
-    - ObjectType: 10
+    EntitiesList:
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 13
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
-      IsStatic: 1
-    - ObjectType: 10
-      IsStatic: 1
-    - ObjectType: 10
-      IsStatic: 1
-    - ObjectType: 10
-      IsStatic: 1
-    - ObjectType: 12
-      IsStatic: 1
-    - ObjectType: 12
-      IsStatic: 1
-    - ObjectType: 12
-      IsStatic: 1
-    - ObjectType: 13
-      IsStatic: 1
-    - ObjectType: 13
-      IsStatic: 1
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 10
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
       IsStatic: 0
-    - ObjectType: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
       IsStatic: 0

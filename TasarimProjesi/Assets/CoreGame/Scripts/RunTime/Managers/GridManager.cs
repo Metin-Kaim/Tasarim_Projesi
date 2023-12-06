@@ -19,8 +19,9 @@ namespace RunTime.Managers
         [SerializeField] private Transform gridContainer;
         [SerializeField] private GameObject tilePrefab;
         [SerializeField] private List<GameObject> tileList;
-        [SerializeField] private GameObject[] objectsArray;
+        [SerializeField] private GameObject[] entitiesArray;
 
+        private int _totalObjectCount;
         private CD_Level _currentLevel;
 
         private void Awake()
@@ -28,15 +29,15 @@ namespace RunTime.Managers
             GridSize gridSize = Resources.Load<CD_Grid>("GridDatas/GridSize").GridSize;
             Row = gridSize.row;
             Column = gridSize.column;
+
+            _totalObjectCount = entitiesArray.Count(x => x.CompareTag("Candy"));
         }
 
         private void Start()
         {
             _currentLevel = LevelSignals.Instance.onGetCurrentLevel?.Invoke();
-            print(_currentLevel);
 
             CreateGrid();
-
         }
 
         public void CreateGrid()
@@ -53,32 +54,31 @@ namespace RunTime.Managers
                 for (int c = 0; c < Column; c++)
                 {
                     objID++;
-                    if (_currentLevel.LevelEntities.ObjectsList[objID].ObjectType == 0) continue;
+                    if (_currentLevel.LevelEntities.EntitiesList[objID].EntityType == 0) continue;
 
                     GameObject currentTile = SpawnTile(cellDistance, currentRow, objID, r, c);
 
-                    if (!_currentLevel.LevelEntities.ObjectsList[objID].IsStatic)
+                    if (!_currentLevel.LevelEntities.EntitiesList[objID].IsStatic)
                     {
                         SpawnObject(currentTile, objID, r, c);
                     }
                     else
                     {
-                        SpawnObject(currentTile, _currentLevel.LevelEntities.ObjectsList[objID].ObjectType, objID, r, c);
+                        SpawnObject(currentTile, _currentLevel.LevelEntities.EntitiesList[objID].EntityType, objID, r, c);
                     }
-
-
                 }
             }
         }
 
         private void SpawnObject(GameObject currentTile, int id, int row, int col)
         {
-            GameObject newObject = Instantiate(objectsArray[Random.Range(0, objectsArray.Length)], currentTile.transform);
+            GameObject newObject = Instantiate(entitiesArray[Random.Range(0, _totalObjectCount)], currentTile.transform);
             newObject.GetComponent<AbsEntity>().SetFeatures(id, row, col);
         }
-        private void SpawnObject(GameObject currentTile, ObjectsEnum objectType, int id, int row, int col) // Her objeye özel script yaz
+        private void SpawnObject(GameObject currentTile, EntitiesEnum objectType, int id, int row, int col) // Her objeye özel script yaz
         {
-            GameObject newObject = Instantiate(objectsArray.FirstOrDefault(x => x.GetComponent<AbsEntity>().ObjectType == objectType), currentTile.transform);
+            GameObject newObject = Instantiate(entitiesArray.FirstOrDefault(x => x.GetComponent<AbsEntity>().ObjectType == objectType), currentTile.transform);
+            newObject.GetComponent<AbsEntity>().SetFeatures(id, row, col);
         }
         private GameObject SpawnTile(float cellDistance, GameObject currentRow, int id, int row, int col)
         {

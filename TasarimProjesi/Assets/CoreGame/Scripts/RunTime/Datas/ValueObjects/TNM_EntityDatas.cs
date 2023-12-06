@@ -11,10 +11,10 @@ using UnityEngine;
 namespace RunTime.Datas.ValueObjects
 {
     [System.Serializable]
-    public struct TNM_ObjectDatas 
+    public struct TNM_EntityDatas 
     {
-        public ObjectsEnum ObjectType;
+        public EntitiesEnum EntityType;
         public Texture TextureData;
-        public GameObject ObjectData;
+        public GameObject EntityData;
     }
 }

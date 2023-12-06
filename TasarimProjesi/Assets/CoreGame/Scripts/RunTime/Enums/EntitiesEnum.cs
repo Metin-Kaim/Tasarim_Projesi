@@ -1,7 +1,7 @@
 ﻿
 namespace RunTime.Enums
 {
-    public enum ObjectsEnum
+    public enum EntitiesEnum
     {
         None,
         Tile,

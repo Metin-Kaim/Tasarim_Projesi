@@ -2,7 +2,7 @@
 
 namespace RunTime.Handlers
 {
-    public class TileHandler : AbsEntity
+    public class RocketHandler : AbsEntity
     {
         protected override void OnTouch()
         {

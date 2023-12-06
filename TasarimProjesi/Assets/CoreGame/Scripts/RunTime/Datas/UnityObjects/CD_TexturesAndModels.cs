@@ -6,6 +6,6 @@ namespace RunTime.Datas.UnityObjects
     [CreateAssetMenu(fileName = "new SpritesAndModels", menuName = "Project/New SpritesAndModels")]
     public class CD_TexturesAndModels : ScriptableObject
     {
-        public TNM_ObjectDatas[] ObjectDatas;
+        public TNM_EntityDatas[] ObjectDatas;
     }
 }

@@ -29,6 +29,7 @@ namespace Editor
         private CD_TexturesAndModels _texturesAndModels;
         private readonly List<Texture> _objectsTextures = new();
         private readonly List<string> _objectsNames = new();
+        private readonly List<EntitiesEnum> _objectsTypes = new();
         private bool _isStatic;
 
         [MenuItem("Tools/Level Editor")]
@@ -62,10 +63,16 @@ namespace Editor
 
             _selectedCell = GUILayout.SelectionGrid(-1, _cellsTextures, _col, _cellStyle); // Select any cell
 
+            EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Clear Grid"))
             {
                 AllClear();
             }
+            if (GUILayout.Button("Fill Grid"))
+            {
+                FillGrid();
+            }
+            EditorGUILayout.EndHorizontal();
 
             Seperator();
 
@@ -131,27 +138,27 @@ namespace Editor
                 {
                     _level = GetLevel();
 
-                    if (_level.LevelEntities.ObjectsList.Count == _row * _col)
+                    if (_level.LevelEntities.EntitiesList.Count == _row * _col)
                     {
                         LoadMainCellTexturesFromLevels();
                     }
                     else // calculate level's data's count
                     {
-                        int value = (_row * _col) - _level.LevelEntities.ObjectsList.Count;
+                        int value = (_row * _col) - _level.LevelEntities.EntitiesList.Count;
 
                         #region if count of level's data is less or more than grid size then fix it
                         if (value > 0) // increase level's data
                         {
                             for (int i = 0; i < value; i++)
                             {
-                                _level.LevelEntities.ObjectsList.Add(new());
+                                _level.LevelEntities.EntitiesList.Add(new());
                             }
                         }
                         else // decrease level's data
                         {
                             for (int i = 0; i < -value; i++)
                             {
-                                _level.LevelEntities.ObjectsList.RemoveAt(_level.LevelEntities.ObjectsList.Count - 1);
+                                _level.LevelEntities.EntitiesList.RemoveAt(_level.LevelEntities.EntitiesList.Count - 1);
                             }
                         }
                     }
@@ -159,6 +166,20 @@ namespace Editor
                 }
             }
             #endregion
+        }
+
+        private void FillGrid()
+        {
+            for (int i = 0; i < _cellsTextures.Length; i++)
+            {
+                if (_cellsTextures[i] != null) continue;
+
+                _cellsTextures[i] = _objectsTextures[1];
+
+                if (_selectedLevel <= 0) continue; // if selected level zero (choose level)
+
+                _level.LevelEntities.EntitiesList[i].SetFeatures(_objectsTypes[1], false);
+            }
         }
 
         private void ClearObjectFeatures()
@@ -184,11 +205,11 @@ namespace Editor
         {
             for (int i = 0; i < _row * _col; i++)
             {
-                if (_level.LevelEntities.ObjectsList[i].ObjectType != 0)
+                if (_level.LevelEntities.EntitiesList[i].EntityType != 0)
                 {
                     for (int j = 0; j < _texturesAndModels.ObjectDatas.Length; j++)
                     {
-                        if (_texturesAndModels.ObjectDatas[j].ObjectType == _level.LevelEntities.ObjectsList[i].ObjectType)
+                        if (_texturesAndModels.ObjectDatas[j].EntityType == _level.LevelEntities.EntitiesList[i].EntityType)
                         {
                             _cellsTextures[i] = _texturesAndModels.ObjectDatas[j].TextureData;
                             break;
@@ -255,11 +276,11 @@ namespace Editor
 
             if (_objectsTextures[_selectedTexture] != null) // any object selected
             {
-                _level.LevelEntities.ObjectsList[_selectedCell].SetFeatures(_texturesAndModels.ObjectDatas[_selectedTexture].ObjectType, _isStatic);
+                _level.LevelEntities.EntitiesList[_selectedCell].SetFeatures(_objectsTypes[_selectedTexture], _isStatic);
             }
             else
             {
-                _level.LevelEntities.ObjectsList[_selectedCell].Reset();
+                _level.LevelEntities.EntitiesList[_selectedCell].Reset();
 
             }
         }
@@ -274,6 +295,8 @@ namespace Editor
             if (_objectsTextures.Count > 0)
             {
                 _objectsTextures.Clear();
+                _objectsTypes.Clear();
+                _objectsNames.Clear();
             }
 
             int length = _texturesAndModels.ObjectDatas.Length;
@@ -281,7 +304,9 @@ namespace Editor
             for (int i = 0; i < length; i++)
             {
                 _objectsTextures.Add(_texturesAndModels.ObjectDatas[i].TextureData);
-                _objectsNames.Add(_texturesAndModels.ObjectDatas[i].ObjectType.ToString());
+                _objectsNames.Add(_texturesAndModels.ObjectDatas[i].EntityType.ToString());
+                _objectsTypes.Add(_texturesAndModels.ObjectDatas[i].EntityType);
+
             }
         }
     }

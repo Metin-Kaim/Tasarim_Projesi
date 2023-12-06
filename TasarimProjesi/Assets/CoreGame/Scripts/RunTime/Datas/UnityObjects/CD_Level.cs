@@ -11,9 +11,9 @@ namespace RunTime.Datas.UnityObjects
 
         public void Reset()
         {
-            for (int i = 0; i < LevelEntities.ObjectsList.Count; i++)
+            for (int i = 0; i < LevelEntities.EntitiesList.Count; i++)
             {
-                LevelEntities.ObjectsList[i].Reset();
+                LevelEntities.EntitiesList[i].Reset();
             }
         }
     }

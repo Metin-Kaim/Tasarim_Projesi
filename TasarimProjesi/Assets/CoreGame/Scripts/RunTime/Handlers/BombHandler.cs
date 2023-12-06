@@ -1,5 +1,6 @@
 ﻿using RunTime.Abstracts.Entities;
 using RunTime.Enums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ namespace RunTime.Handlers
                         {
                             //        if (otherTile.CurrentEntity.EntityType == EntityType)
                             //        {
-                            print($"x: {x} - {otherTile.CurrentEntity.EntityType}, y: {y} -  {EntityType}");
+                            //print($"x: {x} - {otherTile.CurrentEntity.EntityType}, y: {y} -  {EntityType}");
                             otherTile.IsChecked = true;//bir sonraki sekerin degerleri degistiriliyor.
 
                             chosenCandies.Add(new List<int> { x, y }); // eslesen her sekeri listeye ekleme.
@@ -62,13 +63,25 @@ namespace RunTime.Handlers
 
             CurrentTile.IsChecked = true;//secilen sekeri isaretle
 
-            _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarýný al
 
             CheckOtherDirections(Row, Column, _chosenCandies);
+
+            _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarýný al
 
             foreach (var item in _chosenCandies)
             {
                 Destroy(tileHandlersArray[item[0], item[1]].CurrentEntity.gameObject);
+            }
+
+            //StartCoroutine(DestroyThem());
+        }
+
+        IEnumerator DestroyThem()
+        {
+            foreach (var item in _chosenCandies)
+            {
+                Destroy(tileHandlersArray[item[0], item[1]].CurrentEntity.gameObject);
+                yield return new WaitForSeconds(0);
             }
         }
     }

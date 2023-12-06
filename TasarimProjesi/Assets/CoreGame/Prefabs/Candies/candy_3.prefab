@@ -101,7 +101,8 @@ MonoBehaviour:
   _id: 0
   _row: 0
   _column: 0
-  _objectType: 12
+  _entityType: 12
+  _currentTile: {fileID: 0}
 --- !u!65 &-400236377508867138
 BoxCollider:
   m_ObjectHideFlags: 0

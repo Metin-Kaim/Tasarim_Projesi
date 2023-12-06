@@ -1,4 +1,6 @@
 ﻿using RunTime.Enums;
+using RunTime.Handlers;
+using RunTime.Signals;
 using UnityEngine;
 
 namespace RunTime.Abstracts.Entities
@@ -8,13 +10,21 @@ namespace RunTime.Abstracts.Entities
         [SerializeField] private int _id;
         [SerializeField] private int _row;
         [SerializeField] private int _column;
-        [SerializeField] private EntitiesEnum _objectType;
+        [SerializeField] private EntitiesEnum _entityType;
+
+        protected Vector2 gridSize;
+        protected TileHandler[,] tileHandlersArray;
 
         public int Id { get => _id; set => _id = value; }
         public int Row { get => _row; set => _row = value; }
         public int Column { get => _column; set => _column = value; }
-        public EntitiesEnum ObjectType => _objectType;
+        public EntitiesEnum EntityType => _entityType;
 
+        protected virtual void Start()
+        {
+            gridSize = GridSignals.Instance.onGetGridSize.Invoke();
+            tileHandlersArray = GridSignals.Instance.onGetTileHandlers.Invoke();
+        }
 
         public void SetFeatures(int id, int row, int column)
         {

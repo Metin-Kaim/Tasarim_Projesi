@@ -5,6 +5,7 @@ using RunTime.Handlers;
 using RunTime.Signals;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -18,11 +19,12 @@ namespace RunTime.Managers
 
         [SerializeField] private Transform gridContainer;
         [SerializeField] private GameObject tilePrefab;
-        [SerializeField] private List<GameObject> tileList;
         [SerializeField] private GameObject[] entitiesArray;
 
+        private TileHandler[,] _tileHandlersArray;
         private int _totalObjectCount;
         private CD_Level _currentLevel;
+        public static List<List<int>> _chosenCandies = new();
 
         private void Awake()
         {
@@ -30,8 +32,32 @@ namespace RunTime.Managers
             Row = gridSize.row;
             Column = gridSize.column;
 
+            _tileHandlersArray = new TileHandler[Row, Column];
+
             _totalObjectCount = entitiesArray.Count(x => x.CompareTag("Candy"));
         }
+
+        private void OnEnable()
+        {
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            GridSignals.Instance.onGetTileHandlers += () => _tileHandlersArray;
+            GridSignals.Instance.onGetGridSize += () => new Vector2(Row, Column);
+        }
+
+        private void UnSibscribeEvents()
+        {
+            GridSignals.Instance.onGetTileHandlers -= () => _tileHandlersArray;
+            GridSignals.Instance.onGetGridSize -= () => new Vector2(Row, Column);
+        }
+        private void OnDisable()
+        {
+            UnSibscribeEvents();
+        }
+
 
         private void Start()
         {
@@ -56,7 +82,9 @@ namespace RunTime.Managers
                     objID++;
                     if (_currentLevel.LevelEntities.EntitiesList[objID].EntityType == 0) continue;
 
-                    GameObject currentTile = SpawnTile(cellDistance, currentRow, objID, r, c);
+                    TileHandler currentTile = SpawnTile(cellDistance, currentRow, objID, r, c);
+
+                    _tileHandlersArray[r, c] = currentTile;
 
                     if (!_currentLevel.LevelEntities.EntitiesList[objID].IsStatic)
                     {
@@ -68,28 +96,40 @@ namespace RunTime.Managers
                     }
                 }
             }
+
+            foreach (TileHandler currentTile in _tileHandlersArray)
+            {
+                print(currentTile);
+            }
         }
 
-        private void SpawnObject(GameObject currentTile, int id, int row, int col)
+        private void SpawnObject(TileHandler currentTile, int id, int row, int col)
         {
             GameObject newObject = Instantiate(entitiesArray[Random.Range(0, _totalObjectCount)], currentTile.transform);
-            newObject.GetComponent<AbsEntity>().SetFeatures(id, row, col);
+            AbsEntity absEntity = newObject.GetComponent<AbsEntity>();
+            ITouchable touchable = newObject.GetComponent<ITouchable>();
+            absEntity.SetFeatures(id, row, col);
+            touchable.CurrentTile = currentTile;
+            currentTile.CurrentEntity = absEntity;
         }
-        private void SpawnObject(GameObject currentTile, EntitiesEnum objectType, int id, int row, int col) // Her objeye özel script yaz
+        private void SpawnObject(TileHandler currentTile, EntitiesEnum objectType, int id, int row, int col) // Her objeye özel script yaz
         {
-            GameObject newObject = Instantiate(entitiesArray.FirstOrDefault(x => x.GetComponent<AbsEntity>().ObjectType == objectType), currentTile.transform);
-            newObject.GetComponent<AbsEntity>().SetFeatures(id, row, col);
+            GameObject newObject = Instantiate(entitiesArray.FirstOrDefault(x => x.GetComponent<AbsEntity>().EntityType == objectType), currentTile.transform);
+            AbsEntity absEntity = newObject.GetComponent<AbsEntity>();
+            ITouchable touchable = newObject.GetComponent<ITouchable>();
+            absEntity.SetFeatures(id, row, col);
+            touchable.CurrentTile = currentTile;
+            currentTile.CurrentEntity = absEntity;
         }
-        private GameObject SpawnTile(float cellDistance, GameObject currentRow, int id, int row, int col)
+        private TileHandler SpawnTile(float cellDistance, GameObject currentRow, int id, int row, int col)
         {
-            GameObject currentTile = Instantiate(tilePrefab, currentRow.transform);
-            currentTile.transform.localPosition = new(cellDistance * col, 0, 0);
-            currentTile.name = $"Tile {row}-{col}";
-            currentTile.GetComponent<AbsEntity>().SetFeatures(id, row, col);
+            TileHandler tileHandler = Instantiate(tilePrefab, currentRow.transform).GetComponent<TileHandler>();
+            tileHandler.transform.localPosition = new(cellDistance * col, 0, 0);
+            tileHandler.name = $"Tile {row}-{col}";
+            tileHandler.GetComponent<AbsEntity>().SetFeatures(id, row, col);
 
-            tileList.Add(currentTile);
 
-            return currentTile;
+            return tileHandler;
         }
     }
 }

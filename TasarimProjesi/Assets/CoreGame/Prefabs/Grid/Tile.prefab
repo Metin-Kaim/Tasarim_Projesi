@@ -100,4 +100,6 @@ MonoBehaviour:
   _id: 0
   _row: 0
   _column: 0
-  _objectType: 1
+  _entityType: 1
+  IsChecked: 0
+  CurrentEntity: {fileID: 0}

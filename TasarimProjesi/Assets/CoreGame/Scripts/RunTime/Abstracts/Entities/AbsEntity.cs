@@ -1,6 +1,7 @@
 ﻿using RunTime.Enums;
 using RunTime.Handlers;
 using RunTime.Signals;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RunTime.Abstracts.Entities
@@ -19,6 +20,8 @@ namespace RunTime.Abstracts.Entities
         public int Row { get => _row; set => _row = value; }
         public int Column { get => _column; set => _column = value; }
         public EntitiesEnum EntityType => _entityType;
+
+        public static List<List<int>> _chosenCandies = new();
 
         protected virtual void Start()
         {

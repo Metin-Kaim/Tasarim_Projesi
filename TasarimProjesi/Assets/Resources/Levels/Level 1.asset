@@ -14,24 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelEntities:
     EntitiesList:
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
     - EntityType: 10
       IsStatic: 0
     - EntityType: 10
@@ -68,34 +50,8 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 20
-      IsStatic: 1
     - EntityType: 10
       IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 20
-      IsStatic: 1
     - EntityType: 10
       IsStatic: 0
     - EntityType: 10
@@ -126,20 +82,70 @@ MonoBehaviour:
       IsStatic: 1
     - EntityType: 25
       IsStatic: 1
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
     - EntityType: 25
       IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
-    - EntityType: 25
-      IsStatic: 1
     - EntityType: 10
       IsStatic: 0
     - EntityType: 10
@@ -158,21 +164,15 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
-    - EntityType: 30
-      IsStatic: 1
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0

@@ -24,7 +24,6 @@ namespace RunTime.Managers
         private TileHandler[,] _tileHandlersArray;
         private int _totalObjectCount;
         private CD_Level _currentLevel;
-        public static List<List<int>> _chosenCandies = new();
 
         private void Awake()
         {
@@ -95,11 +94,6 @@ namespace RunTime.Managers
                         SpawnObject(currentTile, _currentLevel.LevelEntities.EntitiesList[objID].EntityType, objID, r, c);
                     }
                 }
-            }
-
-            foreach (TileHandler currentTile in _tileHandlersArray)
-            {
-                print(currentTile);
             }
         }
 

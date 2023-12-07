@@ -1,6 +1,5 @@
 ﻿using RunTime.Datas.UnityObjects;
 using RunTime.Handlers;
-using RunTime.Managers;
 using RunTime.Signals;
 using UnityEngine;
 
@@ -8,11 +7,25 @@ namespace RunTime.Controllers
 {
     public class GridController : MonoBehaviour
     {
-        //[SerializeField] GridManager gridManager;
         [SerializeField] Transform gridContainer;
         [SerializeField] EntitySpawnController entitySpawnController;
 
         private CD_Level _currentLevel;
+        private TileHandler[,] _tileHandlersArray;
+        private int _row;
+        private int _column;
+
+        public Vector2 GetGridSize => new(_row, _column);
+        public TileHandler[,] TileHandlersArray => _tileHandlersArray;
+
+        private void Awake()
+        {
+            GridSize gridSize = Resources.Load<CD_Grid>("GridDatas/GridSize").GridSize;
+            _row = gridSize.row;
+            _column = gridSize.column;
+
+            _tileHandlersArray = new TileHandler[_row, _column];
+        }
 
         private void Start()
         {
@@ -30,7 +43,6 @@ namespace RunTime.Controllers
 
             int row = (int)gridSize.x;
             int col = (int)gridSize.y;
-            TileHandler[,] tileHandlersArray = GridSignals.Instance.onGetTileHandlers?.Invoke();
 
             for (int r = 0; r < row; r++)
             {
@@ -45,7 +57,7 @@ namespace RunTime.Controllers
 
                     TileHandler currentTile = entitySpawnController.SpawnTile(cellDistance, currentRow, objID, r, c);
 
-                    tileHandlersArray[r, c] = currentTile;
+                    _tileHandlersArray[r, c] = currentTile;
 
                     if (!_currentLevel.LevelEntities.EntitiesList[objID].IsStatic)
                     {

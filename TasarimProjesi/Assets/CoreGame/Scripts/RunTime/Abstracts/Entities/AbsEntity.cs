@@ -15,20 +15,11 @@ namespace RunTime.Abstracts.Entities
         [SerializeField] private EntitiesEnum _entityType;
         [SerializeField] private TileHandler _currentTile;
 
-        public void SetFeatures(int id, int row, int col)
-        {
-            Id = id;
-            Row = row;
-            Column = col;
-        }
-
-
         protected Vector2 gridSize;
         protected TileHandler[,] tileHandlersArray;
 
         private SpriteRenderer _spriteRenderer;
         private Tweener _moveTweener;
-
 
         public static List<List<int>> _chosenCandies = new();
         public int Id { get => _id; set => _id = value; }
@@ -49,7 +40,12 @@ namespace RunTime.Abstracts.Entities
             tileHandlersArray = GridSignals.Instance.onGetTileHandlers.Invoke();
         }
 
-
+        public void SetFeatures(int id, int row, int col)
+        {
+            Id = id;
+            Row = row;
+            Column = col;
+        }
 
         public void AdjustStateOfEntity(bool state)
         {

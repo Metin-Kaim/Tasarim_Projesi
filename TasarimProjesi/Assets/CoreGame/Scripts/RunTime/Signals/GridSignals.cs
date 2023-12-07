@@ -1,6 +1,7 @@
 ﻿using RunTime.Handlers;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RunTime.Signals
 {
@@ -22,5 +23,6 @@ namespace RunTime.Signals
 
         public Func<Vector2> onGetGridSize;
         public Func<TileHandler[,]> onGetTileHandlers;
+        public UnityAction<TileHandler> onSpawnNewEntity;
     }
 }

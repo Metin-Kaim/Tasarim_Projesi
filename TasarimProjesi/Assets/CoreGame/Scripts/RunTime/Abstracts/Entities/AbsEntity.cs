@@ -16,12 +16,21 @@ namespace RunTime.Abstracts.Entities
         protected Vector2 gridSize;
         protected TileHandler[,] tileHandlersArray;
 
+        private BoxCollider _boxCollider;
+        public SpriteRenderer _spriteRenderer;
+
         public int Id { get => _id; set => _id = value; }
         public int Row { get => _row; set => _row = value; }
         public int Column { get => _column; set => _column = value; }
         public EntitiesEnum EntityType => _entityType;
 
         public static List<List<int>> _chosenCandies = new();
+
+        public virtual void Awake()
+        {
+            _boxCollider = GetComponent<BoxCollider>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
         protected virtual void Start()
         {
@@ -34,6 +43,20 @@ namespace RunTime.Abstracts.Entities
             Id = id;
             Row = row;
             Column = column;
+        }
+
+        public void AdjustStateOfEntity(bool state)
+        {
+            if (state)
+            {
+                _boxCollider.enabled = true;
+                _spriteRenderer.enabled = true;
+            }
+            else
+            {
+                _boxCollider.enabled = false;
+                _spriteRenderer.enabled = false;
+            }
         }
 
     }

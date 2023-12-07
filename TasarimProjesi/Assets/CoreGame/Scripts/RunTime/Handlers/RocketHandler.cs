@@ -1,5 +1,6 @@
 ﻿using RunTime.Abstracts.Entities;
 using RunTime.Enums;
+using RunTime.Signals;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,17 @@ namespace RunTime.Handlers
     public class RocketHandler : AbsEntity, ITouchable
     {
         [SerializeField] private TileHandler _currentTile;
+        [SerializeField] private GameObject _child;
 
+        public GameObject Child { get => _child; set => _child = value; }
         public TileHandler CurrentTile { get => _currentTile; set => _currentTile = value; }
 
         bool _isRow;
 
-        private void Awake()
+        public override void Awake()
         {
+            base.Awake();
+
             float value = Random.value;
 
             if (value < .5f)
@@ -94,7 +99,9 @@ namespace RunTime.Handlers
 
             foreach (var item in _chosenCandies)
             {
-                Destroy(tileHandlersArray[item[0], item[1]].CurrentEntity.gameObject);
+                tileHandlersArray[item[0], item[1]].CurrentEntity.AdjustStateOfEntity(false);
+                //GridSignals.Instance.onSpawnNewEntity?.Invoke(tileHandlersArray[item[0], item[1]]);
+
             }
 
             //StartCoroutine(DestroyThem());
@@ -104,8 +111,9 @@ namespace RunTime.Handlers
         {
             foreach (var item in _chosenCandies)
             {
-                Destroy(tileHandlersArray[item[0], item[1]].CurrentEntity.gameObject);
-                yield return new WaitForSeconds(0);
+                tileHandlersArray[item[0], item[1]].CurrentEntity.AdjustStateOfEntity(false);
+                yield return new WaitForSeconds(.1f);
+                GridSignals.Instance.onSpawnNewEntity?.Invoke(tileHandlersArray[item[0], item[1]]);
             }
         }
 

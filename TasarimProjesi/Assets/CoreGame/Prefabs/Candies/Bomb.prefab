@@ -102,7 +102,9 @@ MonoBehaviour:
   _row: 0
   _column: 0
   _entityType: 25
+  _spriteRenderer: {fileID: 0}
   _currentTile: {fileID: 0}
+  _child: {fileID: 0}
 --- !u!65 &8563064774573349013
 BoxCollider:
   m_ObjectHideFlags: 0

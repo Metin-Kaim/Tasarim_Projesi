@@ -7,7 +7,9 @@ namespace RunTime.Handlers
     public class BoxHandler : AbsEntity, ITouchable
     {
         [SerializeField] private TileHandler _currentTile;
+        [SerializeField] private GameObject _child;
 
+        public GameObject Child { get => _child; set => _child = value; }
         public TileHandler CurrentTile { get => _currentTile; set => _currentTile = value; }
 
         public void CallForCheck()

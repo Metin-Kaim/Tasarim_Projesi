@@ -9,7 +9,9 @@ namespace RunTime.Handlers
     public class BombHandler : AbsEntity, ITouchable
     {
         [SerializeField] private TileHandler _currentTile;
+        [SerializeField] private GameObject _child;
 
+        public GameObject Child { get => _child; set => _child = value; }
         public TileHandler CurrentTile { get => _currentTile; set => _currentTile = value; }
 
         public void OnMouseDown()
@@ -29,15 +31,11 @@ namespace RunTime.Handlers
                     {
                         if (otherTile.GetComponent<TileHandler>().IsChecked != true)
                         {
-                            //        if (otherTile.CurrentEntity.EntityType == EntityType)
-                            //        {
-                            //print($"x: {x} - {otherTile.CurrentEntity.EntityType}, y: {y} -  {EntityType}");
                             otherTile.IsChecked = true;//bir sonraki sekerin degerleri degistiriliyor.
 
                             chosenCandies.Add(new List<int> { x, y }); // eslesen her sekeri listeye ekleme.
                             if (otherTile.CurrentEntity.EntityType == EntitiesEnum.Bomb || otherTile.CurrentEntity.EntityType == EntitiesEnum.Rocket)
                                 otherTile.CurrentEntity.GetComponent<ITouchable>().CheckOtherDirections(x, y, chosenCandies);
-                            //        }
                         }
                     }
                 }
@@ -66,7 +64,7 @@ namespace RunTime.Handlers
 
             CheckOtherDirections(Row, Column, _chosenCandies);
 
-            _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarýný al
+            _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarini al
 
             foreach (var item in _chosenCandies)
             {

@@ -1,0 +1,6 @@
+﻿[>] Şekerlerin combolanmasını
+	[>] Combolanmış şekerler patlatıldığında ilgili yerde ilgili objenin oluşması
+[-]	Bomba ve roketlerin combolanması
+[-]	Efektlerin çıkması
+[-]	Seviyelere koşulların girilmesi
+[-]	Seviye geçilmesi / Fail durumu

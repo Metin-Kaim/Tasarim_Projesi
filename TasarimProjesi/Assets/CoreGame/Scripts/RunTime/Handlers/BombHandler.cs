@@ -1,48 +1,16 @@
-﻿using RunTime.Abstracts.Entities;
+﻿using DG.Tweening;
+using RunTime.Abstracts.Entities;
 using RunTime.Enums;
+using RunTime.Signals;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace RunTime.Handlers
 {
-    public class BombHandler : AbsEntity, ITouchable
+    public class BombHandler : AbsEntity
     {
-        [SerializeField] private TileHandler _currentTile;
-        [SerializeField] private GameObject _child;
-
-        public GameObject Child { get => _child; set => _child = value; }
-        public TileHandler CurrentTile { get => _currentTile; set => _currentTile = value; }
-
-        public void OnMouseDown()
-        {
-            CallForCheck();
-        }
-
-        public void CheckForMatches(int x, int y, List<List<int>> chosenCandies)
-        {
-
-            if (y <= gridSize.y - 1 && y >= 0)//check for bounds
-            {
-                if (x <= gridSize.x - 1 && x >= 0)//check for bounds
-                {
-                    TileHandler otherTile = tileHandlersArray[x, y];
-                    if (otherTile != null)
-                    {
-                        if (otherTile.GetComponent<TileHandler>().IsChecked != true)
-                        {
-                            otherTile.IsChecked = true;//bir sonraki sekerin degerleri degistiriliyor.
-
-                            chosenCandies.Add(new List<int> { x, y }); // eslesen her sekeri listeye ekleme.
-                            if (otherTile.CurrentEntity.EntityType == EntitiesEnum.Bomb || otherTile.CurrentEntity.EntityType == EntitiesEnum.Rocket)
-                                otherTile.CurrentEntity.GetComponent<ITouchable>().CheckOtherDirections(x, y, chosenCandies);
-                        }
-                    }
-                }
-            }
-        }
-
-        public void CheckOtherDirections(int x, int y, List<List<int>> chosenCandies)
+        public override void CheckOtherDirections(int x, int y, List<List<int>> chosenCandies)
         {
             CheckForMatches(x, y + 1, chosenCandies);
             CheckForMatches(x, y - 1, chosenCandies);
@@ -52,35 +20,6 @@ namespace RunTime.Handlers
             CheckForMatches(x - 1, y + 1, chosenCandies);
             CheckForMatches(x + 1, y - 1, chosenCandies);
             CheckForMatches(x + 1, y + 1, chosenCandies);
-        }
-
-        public void CallForCheck() //Herhangi bir sekilde sekerleri kontrol etmek ve ayni turde olan sekerler uzerinde islem yapmak icin gerekli adimlari bulunduran method
-        {
-            //Listeyi temizle
-            _chosenCandies.Clear();
-
-            CurrentTile.IsChecked = true;//secilen sekeri isaretle
-
-
-            CheckOtherDirections(Row, Column, _chosenCandies);
-
-            _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarini al
-
-            foreach (var item in _chosenCandies)
-            {
-                Destroy(tileHandlersArray[item[0], item[1]].CurrentEntity.gameObject);
-            }
-
-            //StartCoroutine(DestroyThem());
-        }
-
-        IEnumerator DestroyThem()
-        {
-            foreach (var item in _chosenCandies)
-            {
-                Destroy(tileHandlersArray[item[0], item[1]].CurrentEntity.gameObject);
-                yield return new WaitForSeconds(0);
-            }
         }
     }
 }

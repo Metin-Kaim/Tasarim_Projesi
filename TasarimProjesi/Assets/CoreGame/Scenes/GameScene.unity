@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 52990096}
   - component: {fileID: 52990097}
+  - component: {fileID: 52990098}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -165,6 +166,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35417b4bdd46ace48b923c8be815dbc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &52990098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52990095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb90e30db0a121468f04909c3b6d1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &904089114
@@ -316,6 +329,7 @@ GameObject:
   - component: {fileID: 1767321600}
   - component: {fileID: 1767321599}
   - component: {fileID: 1767321602}
+  - component: {fileID: 1767321603}
   m_Layer: 0
   m_Name: Signals
   m_TagString: Untagged
@@ -374,6 +388,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a3251b2f1561b4f819036bac3c20aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1767321603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767321598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e97aa0a873230da409bc15e26f040647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2276927547047917733
 Transform:
   m_ObjectHideFlags: 0
@@ -399,6 +425,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2276927547047917733}
   - component: {fileID: 4854962396104085337}
+  - component: {fileID: 4854962396104085339}
+  - component: {fileID: 4854962396104085338}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -418,7 +446,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e10d88e3d760546bad56805eb18adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridContainer: {fileID: 2276927547047917733}
+  spawnController: {fileID: 4854962396104085338}
+--- !u!114 &4854962396104085338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854962396104085336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c649d2f635bc054599c50f6d4b5d49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   tilePrefab: {fileID: 5350848060114063476, guid: cb5e293a4762970428596e00e2e456c1, type: 3}
   entitiesArray:
   - {fileID: 2869402261734119329, guid: 77214a7613e95604b92d1b0e8632fe4f, type: 3}
@@ -428,6 +468,20 @@ MonoBehaviour:
   - {fileID: 7589667893212823564, guid: 5e818a0414eb54748bef89dba69426e2, type: 3}
   - {fileID: 9048597547687291292, guid: 1cd68b4b6a64b0f4991f73d725cf0ce3, type: 3}
   - {fileID: 5834986003518582529, guid: 6bbe1ca5504e9fd49961cbd1636be106, type: 3}
+--- !u!114 &4854962396104085339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854962396104085336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351dd32d7c0ff8e44a8b3a6365589fc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridContainer: {fileID: 2276927547047917733}
+  entitySpawnController: {fileID: 4854962396104085338}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -69,7 +69,9 @@ namespace RunTime.Controllers
                     }
                 }
             }
+            GridSignals.Instance.onScanGrid?.Invoke();
             InputSignals.Instance.onEnableTouch?.Invoke(.1f);
+
         }
     }
 }

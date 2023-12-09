@@ -1,7 +1,5 @@
 ﻿using RunTime.Abstracts.Entities;
-using RunTime.Enums;
 using RunTime.Signals;
-using System;
 using UnityEngine;
 
 namespace RunTime.Handlers
@@ -15,9 +13,17 @@ namespace RunTime.Handlers
         public bool IsChecked;
         public AbsEntity CurrentEntity;
 
+        SpriteRenderer _spriteRenderer;
+
         public int Id { get => _id; set => _id = value; }
         public int Row { get => _row; set => _row = value; }
         public int Column { get => _column; set => _column = value; }
+        public SpriteRenderer SpriteRenderer { get => _spriteRenderer; set => _spriteRenderer = value; }
+
+        private void Awake()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
 
         public void SetFeatures(int id, int row, int col)
         {
@@ -28,13 +34,11 @@ namespace RunTime.Handlers
 
         protected virtual void OnMouseDown()
         {
-            if ((bool)(InputSignals.Instance.onGetStateOfTouch?.Invoke()))
+            if (InputSignals.Instance.onGetStateOfTouch.Invoke())
             {
                 InputSignals.Instance.onDisableTouch?.Invoke();
                 CurrentEntity.CallToCheck();
             }
         }
-
-
     }
 }

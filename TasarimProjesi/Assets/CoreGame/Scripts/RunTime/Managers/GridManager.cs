@@ -8,6 +8,7 @@ namespace RunTime.Managers
     {
         [SerializeField] EntitySpawnController spawnController;
         [SerializeField] GridController gridController;
+        [SerializeField] ScanController scanController;
 
         private void OnEnable()
         {
@@ -19,6 +20,7 @@ namespace RunTime.Managers
             GridSignals.Instance.onGetTileHandlers += () => gridController.TileHandlersArray;
             GridSignals.Instance.onGetGridSize += () => gridController.GetGridSize;
             GridSignals.Instance.onSpawnNewEntity += spawnController.SpawnObject;
+            GridSignals.Instance.onScanGrid += scanController.ScanForCombo;
         }
 
         private void UnSibscribeEvents()
@@ -26,6 +28,7 @@ namespace RunTime.Managers
             GridSignals.Instance.onGetTileHandlers -= () => gridController.TileHandlersArray;
             GridSignals.Instance.onGetGridSize -= () => gridController.GetGridSize;
             GridSignals.Instance.onSpawnNewEntity -= spawnController.SpawnObject;
+            GridSignals.Instance.onScanGrid -= scanController.ScanForCombo;
         }
         private void OnDisable()
         {

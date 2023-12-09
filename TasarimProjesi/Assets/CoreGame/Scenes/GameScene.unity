@@ -427,6 +427,7 @@ GameObject:
   - component: {fileID: 4854962396104085337}
   - component: {fileID: 4854962396104085339}
   - component: {fileID: 4854962396104085338}
+  - component: {fileID: 4854962396104085340}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -448,6 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnController: {fileID: 4854962396104085338}
   gridController: {fileID: 4854962396104085339}
+  scanController: {fileID: 4854962396104085340}
 --- !u!114 &4854962396104085338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +485,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridContainer: {fileID: 2276927547047917733}
   entitySpawnController: {fileID: 4854962396104085338}
+--- !u!114 &4854962396104085340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4854962396104085336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0816b3a9f16ffc14384a0c04afd81f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

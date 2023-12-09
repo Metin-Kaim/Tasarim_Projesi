@@ -24,5 +24,6 @@ namespace RunTime.Signals
         public Func<Vector2> onGetGridSize;
         public Func<TileHandler[,]> onGetTileHandlers;
         public UnityAction<TileHandler> onSpawnNewEntity;
+        public UnityAction onScanGrid;
     }
 }

@@ -62,7 +62,7 @@ namespace RunTime.Abstracts.Entities
                     TileHandler otherTile = tileHandlersArray[x, y];
                     if (otherTile != null)
                     {
-                        if (otherTile.GetComponent<TileHandler>().IsChecked != true)
+                        if (otherTile.IsChecked != true)
                         {
                             otherTile.IsChecked = true;//bir sonraki sekerin degerleri degistiriliyor.
 
@@ -95,18 +95,34 @@ namespace RunTime.Abstracts.Entities
                 {
                     tileHandlersArray[item[0], item[1]].CurrentEntity.AdjustStateOfEntity(false);
                     tileHandlersArray[item[0], item[1]].CurrentEntity = null;
+                    tileHandlersArray[item[0], item[1]].SpriteRenderer.color = Color.white;
                 }
 
-                List<List<int>> tempCandies = new List<List<int>>();
+                List<List<int>> tempCandies = new();
                 tempCandies.AddRange(_chosenCandies);
 
                 IsCheckedCleaner();
                 FallUpperCandies(tempCandies);
                 SpawnNewCandies(tempCandies);
                 time = .2f;
+                GridSignals.Instance.onScanGrid?.Invoke();
             }
             InputSignals.Instance.onEnableTouch?.Invoke(time);
         }
+        public List<List<int>> CheckForCombos()
+        {
+            _chosenCandies.Clear();
+
+            CurrentTile.IsChecked = true;//secilen sekeri isaretle
+
+
+            CheckOtherDirections(Row, Column, _chosenCandies);
+
+            _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarýný al
+
+            return _chosenCandies;
+        }
+        
         public abstract void CheckOtherDirections(int x, int y, List<List<int>> chosenCandies);
         protected void FallUpperCandies(List<List<int>> chosenCandies)
         {
@@ -162,7 +178,7 @@ namespace RunTime.Abstracts.Entities
                 }
             }
         }
-        protected void IsCheckedCleaner()
+        public void IsCheckedCleaner()
         {
             for (int y = 0; y < gridSize.x; y++)
             {

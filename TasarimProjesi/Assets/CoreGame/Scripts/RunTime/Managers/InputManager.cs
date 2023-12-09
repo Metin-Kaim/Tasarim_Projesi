@@ -7,7 +7,9 @@ namespace RunTime.Managers
 {
     public class InputManager : MonoBehaviour
     {
-        private bool _isEnable;
+        private bool _isEnable = true;
+
+        public static int TimerCounter = 0;
 
         private void OnEnable()
         {
@@ -17,7 +19,7 @@ namespace RunTime.Managers
         private void SubscribeEvents()
         {
             InputSignals.Instance.onEnableTouch += OnEnableTouch;
-            InputSignals.Instance.onDisableTouch += () => _isEnable = false;
+            InputSignals.Instance.onDisableTouch += () => _isEnable = true;
             InputSignals.Instance.onGetStateOfTouch += () => _isEnable;
         }
 
@@ -27,7 +29,7 @@ namespace RunTime.Managers
         }
         IEnumerator EnableTouch(float time)
         {
-            yield return new WaitForSeconds(time);
+            yield return new WaitForSeconds(0);
             _isEnable = true;
         }
 

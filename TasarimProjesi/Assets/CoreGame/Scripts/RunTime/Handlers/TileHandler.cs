@@ -15,6 +15,8 @@ namespace RunTime.Handlers
 
         SpriteRenderer _spriteRenderer;
 
+        public bool IsBomb { get; set; }
+        public bool IsRocket { get; set; }
         public int Id { get => _id; set => _id = value; }
         public int Row { get => _row; set => _row = value; }
         public int Column { get => _column; set => _column = value; }

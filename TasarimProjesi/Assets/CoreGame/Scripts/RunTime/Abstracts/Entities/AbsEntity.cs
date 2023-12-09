@@ -93,10 +93,14 @@ namespace RunTime.Abstracts.Entities
             {
                 foreach (var item in _chosenCandies)
                 {
-                    tileHandlersArray[item[0], item[1]].CurrentEntity.AdjustStateOfEntity(false);
-                    tileHandlersArray[item[0], item[1]].CurrentEntity = null;
-                    tileHandlersArray[item[0], item[1]].SpriteRenderer.color = Color.white;
+                    TileHandler currentTile = tileHandlersArray[item[0], item[1]];
+                    currentTile.CurrentEntity.AdjustStateOfEntity(false);
+                    currentTile.CurrentEntity.transform.SetParent(null);
+                    currentTile.CurrentEntity = null;
+                    currentTile.SpriteRenderer.color = Color.white;
                 }
+
+                CheckLastTileForSpecialObject();
 
                 List<List<int>> tempCandies = new();
                 tempCandies.AddRange(_chosenCandies);
@@ -109,6 +113,27 @@ namespace RunTime.Abstracts.Entities
             }
             InputSignals.Instance.onEnableTouch?.Invoke(time);
         }
+
+        private void CheckLastTileForSpecialObject()
+        {
+            TileHandler lastTile = tileHandlersArray[_chosenCandies[^1][0], _chosenCandies[^1][1]];
+
+            if (lastTile.IsBomb)
+            {
+                SpawnSpecificEntity(lastTile, EntitiesEnum.Bomb);
+            }
+            else if (lastTile.IsRocket)
+            {
+                SpawnSpecificEntity(lastTile, EntitiesEnum.Rocket);
+            }
+        }
+
+        private static void SpawnSpecificEntity(TileHandler lastTile, EntitiesEnum entityEnum)
+        {
+            GridSignals.Instance.onSpawnTheEntity?.Invoke(lastTile, entityEnum);
+            _chosenCandies.Remove(_chosenCandies[^1]);
+        }
+
         public List<List<int>> CheckForCombos()
         {
             _chosenCandies.Clear();

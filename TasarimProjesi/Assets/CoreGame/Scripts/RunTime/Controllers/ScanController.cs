@@ -34,33 +34,34 @@ namespace RunTime.Controllers
                     {
                         List<List<int>> list = currentTile.CurrentEntity.CheckForCombos();
 
-
-                        print(list.Count);
                         //ilgili sekere ait eslesen sekerlerin listesi olustu
                         if (list.Count >= 5)//bomb
                         {
-                            print("bomb");
                             foreach (var candies in list)
                             {
                                 _tileHandlers[candies[0], candies[1]].SpriteRenderer.color = Color.blue;
+                                _tileHandlers[candies[0], candies[1]].IsBomb = true;
+                                _tileHandlers[candies[0], candies[1]].IsRocket = false;
                             }
                         }
                         else if (list.Count >= 3)//rocket
                         {
-                            print("rocket");
                             foreach (var candies in list)
                             {
                                 _tileHandlers[candies[0], candies[1]].SpriteRenderer.color = Color.red;
+                                _tileHandlers[candies[0], candies[1]].IsBomb = false;
+                                _tileHandlers[candies[0], candies[1]].IsRocket = true;
                             }
                         }
 
                         else
                         {
-                            print("white");
                             foreach (var candies in list)
                             {
                                 //CandiesLocations[candies[0], candies[1]].GetComponent<AbsEntity>().IsChecked = false;
                                 _tileHandlers[candies[0], candies[1]].GetComponent<SpriteRenderer>().color = Color.white;
+                                _tileHandlers[candies[0], candies[1]].IsBomb = false;
+                                _tileHandlers[candies[0], candies[1]].IsRocket = false;
 
                             }
                         }

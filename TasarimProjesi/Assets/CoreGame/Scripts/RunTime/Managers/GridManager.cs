@@ -20,6 +20,7 @@ namespace RunTime.Managers
             GridSignals.Instance.onGetTileHandlers += () => gridController.TileHandlersArray;
             GridSignals.Instance.onGetGridSize += () => gridController.GetGridSize;
             GridSignals.Instance.onSpawnNewEntity += spawnController.SpawnObject;
+            GridSignals.Instance.onSpawnTheEntity += spawnController.SpawnObject;
             GridSignals.Instance.onScanGrid += scanController.ScanForCombo;
         }
 
@@ -28,6 +29,7 @@ namespace RunTime.Managers
             GridSignals.Instance.onGetTileHandlers -= () => gridController.TileHandlersArray;
             GridSignals.Instance.onGetGridSize -= () => gridController.GetGridSize;
             GridSignals.Instance.onSpawnNewEntity -= spawnController.SpawnObject;
+            GridSignals.Instance.onSpawnTheEntity = spawnController.SpawnObject;
             GridSignals.Instance.onScanGrid -= scanController.ScanForCombo;
         }
         private void OnDisable()

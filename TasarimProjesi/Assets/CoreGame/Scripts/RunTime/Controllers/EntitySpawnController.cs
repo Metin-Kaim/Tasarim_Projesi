@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using RunTime.Abstracts.Entities;
+using RunTime.Datas.UnityObjects;
 using RunTime.Enums;
 using RunTime.Handlers;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace RunTime.Controllers
 {
     public class EntitySpawnController : MonoBehaviour
     {
+        [SerializeField] GridController gridController;
         [SerializeField] private GameObject tilePrefab;
         [SerializeField] private GameObject[] entitiesArray;
 
@@ -22,24 +24,27 @@ namespace RunTime.Controllers
         public void SpawnObject(TileHandler currentTile)
         {
             GameObject newObject = Instantiate(entitiesArray[Random.Range(0, _totalObjectCount)], currentTile.transform);
-            SetObjectFeatures(currentTile, newObject);
+            SetObjectFeatures(currentTile, newObject, true);
         }
-        public void SpawnObject(TileHandler currentTile, EntitiesEnum objectType) // Her objeye özel script yaz
+        public void SpawnObject(TileHandler currentTile, EntitiesEnum objectType)
         {
             GameObject newObject = Instantiate(entitiesArray.FirstOrDefault(x => x.GetComponent<AbsEntity>().EntityType == objectType), currentTile.transform);
-            SetObjectFeatures(currentTile, newObject);
+            SetObjectFeatures(currentTile, newObject, false);
         }
-        private void SetObjectFeatures(TileHandler currentTile, GameObject newObject)
+        private void SetObjectFeatures(TileHandler currentTile, GameObject newObject, bool isAnim)
         {
             AbsEntity absEntity = newObject.GetComponent<AbsEntity>();
             absEntity.SetFeatures(currentTile.Id, currentTile.Row, currentTile.Column);
             absEntity.CurrentTile = currentTile;
             currentTile.CurrentEntity = absEntity;
 
+            if (!gridController.IsGridDone || !isAnim) return;
+
             if (absEntity.MoveTweener != null && absEntity.MoveTweener.IsPlaying())
             {
                 absEntity.MoveTweener.Complete();
             }
+
             absEntity.MoveTweener = absEntity.transform.DOLocalMoveY(0, .4f).From(50).OnComplete(() => absEntity.MoveTweener = null);
         }
         public TileHandler SpawnTile(float cellDistance, GameObject currentRow, int id, int row, int col)

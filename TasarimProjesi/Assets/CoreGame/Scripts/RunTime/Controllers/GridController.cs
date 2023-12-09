@@ -17,6 +17,7 @@ namespace RunTime.Controllers
 
         public Vector2 GetGridSize => new(_row, _column);
         public TileHandler[,] TileHandlersArray => _tileHandlersArray;
+        public bool IsGridDone { get; set; }
 
         private void Awake()
         {
@@ -71,6 +72,7 @@ namespace RunTime.Controllers
             }
             GridSignals.Instance.onScanGrid?.Invoke();
             InputSignals.Instance.onEnableTouch?.Invoke(.1f);
+            IsGridDone = true;
 
         }
     }

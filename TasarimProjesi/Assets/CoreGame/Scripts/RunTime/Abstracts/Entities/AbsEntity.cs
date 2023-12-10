@@ -116,6 +116,8 @@ namespace RunTime.Abstracts.Entities
 
         private void CheckLastTileForSpecialObject()
         {
+            //if (EntityType == EntitiesEnum.Rocket || EntityType == EntitiesEnum.Bomb) return;
+
             TileHandler lastTile = tileHandlersArray[_chosenCandies[^1][0], _chosenCandies[^1][1]];
 
             if (lastTile.IsBomb)

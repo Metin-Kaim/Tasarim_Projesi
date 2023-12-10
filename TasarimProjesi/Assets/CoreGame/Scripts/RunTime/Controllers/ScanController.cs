@@ -66,6 +66,13 @@ namespace RunTime.Controllers
                             }
                         }
                     }
+                    else if (currentTile.IsChecked == false && (currentTile.CurrentEntity.EntityType == EntitiesEnum.Bomb || currentTile.CurrentEntity.EntityType == EntitiesEnum.Rocket))
+                    {
+                        currentTile.IsChecked = true;
+                        currentTile.SpriteRenderer.color = Color.white;
+                        currentTile.IsBomb = false;
+                        currentTile.IsRocket = false;
+                    }
                 }
             }
             for (int y = 0; y < 9; y++)

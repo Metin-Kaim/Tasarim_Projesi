@@ -35,7 +35,7 @@ namespace RunTime.Controllers
                         List<List<int>> list = currentTile.CurrentEntity.CheckForCombos();
 
                         //ilgili sekere ait eslesen sekerlerin listesi olustu
-                        if (list.Count >= 5)//bomb
+                        if (list.Count >= 7)//bomb
                         {
                             foreach (var candies in list)
                             {
@@ -44,7 +44,7 @@ namespace RunTime.Controllers
                                 _tileHandlers[candies[0], candies[1]].IsRocket = false;
                             }
                         }
-                        else if (list.Count >= 3)//rocket
+                        else if (list.Count >= 5)//rocket
                         {
                             foreach (var candies in list)
                             {

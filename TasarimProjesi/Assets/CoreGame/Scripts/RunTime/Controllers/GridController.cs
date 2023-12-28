@@ -54,19 +54,19 @@ namespace RunTime.Controllers
                 for (int c = 0; c < col; c++)
                 {
                     objID++;
-                    if (_currentLevel.LevelEntities.EntitiesList[objID].EntityType == 0) continue;
+                    if (_currentLevel.LevelFeatures.EntitiesList[objID].EntityType == 0) continue;
 
                     TileHandler currentTile = entitySpawnController.SpawnTile(cellDistance, currentRow, objID, r, c);
 
                     _tileHandlersArray[r, c] = currentTile;
 
-                    if (!_currentLevel.LevelEntities.EntitiesList[objID].IsStatic)
+                    if (!_currentLevel.LevelFeatures.EntitiesList[objID].IsStatic)
                     {
                         entitySpawnController.SpawnObject(currentTile);
                     }
                     else
                     {
-                        entitySpawnController.SpawnObject(currentTile, _currentLevel.LevelEntities.EntitiesList[objID].EntityType);
+                        entitySpawnController.SpawnObject(currentTile, _currentLevel.LevelFeatures.EntitiesList[objID].EntityType);
                     }
                 }
             }

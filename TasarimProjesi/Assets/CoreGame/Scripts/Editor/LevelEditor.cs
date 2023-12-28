@@ -1,4 +1,6 @@
-﻿using RunTime.Datas.UnityObjects;
+﻿using log4net.Core;
+using RunTime.Datas.UnityObjects;
+using RunTime.Datas.ValueObjects;
 using RunTime.Enums;
 using System;
 using System.Collections.Generic;
@@ -24,6 +26,7 @@ namespace Editor
         private int _backupSelectedLevel;
         private CD_Level _level;
         private GUIStyle _titleLabelStyle;
+        private GUIStyle _sidetitleLabelStyle;
         private GUIStyle _lowSeperatorLabelStyle;
         private int _selectedTexture;
         private CD_TexturesAndModels _texturesAndModels;
@@ -31,6 +34,12 @@ namespace Editor
         private readonly List<string> _objectsNames = new();
         private readonly List<EntitiesEnum> _objectsTypes = new();
         private bool _isStatic;
+        private bool _candy1;
+        private bool _candy2;
+        private bool _candy3;
+        private bool _candy4;
+        private List<LevelGoals> _goalsList;
+
 
         [MenuItem("Tools/Level Editor")]
         static void ShowWindow()
@@ -50,12 +59,11 @@ namespace Editor
 
                 _cellsTextures = new Texture[_row * _col];
 
+
                 AdjustCell();
                 GetLevels();
                 AdjustLabelsStyles();
                 FixTextures();
-
-                //Debug.Log($"row: {_row}, col: {_col}");
             }
 
             _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition); // Scroll Begin
@@ -85,6 +93,69 @@ namespace Editor
             {
                 GetLevels();
             }
+            #endregion
+
+            Seperator();
+
+            #region Level Features
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Level Features", _titleLabelStyle);
+
+            if (GUILayout.Button("Clear Level Features", new GUIStyle(GUI.skin.button) { fixedWidth = 150, margin = new RectOffset(0, 20, 7, 10) }))
+            {
+                ClearLevelFeatures();
+            }
+            EditorGUILayout.EndHorizontal();
+
+            LowSeperator();
+
+            EditorGUILayout.BeginVertical();
+            EditorGUI.BeginChangeCheck();
+            _candy1 = GUILayout.Toggle(_candy1, "Candy 1");
+            _candy2 = GUILayout.Toggle(_candy2, "Candy 2");
+            _candy3 = GUILayout.Toggle(_candy3, "Candy 3");
+            _candy4 = GUILayout.Toggle(_candy4, "Candy 4");
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (_selectedLevel > 0)
+                {
+                    _level.LevelFeatures.AllowedCandies.SetAllows(_candy1, _candy2, _candy3, _candy4);
+                }
+            }
+            EditorGUILayout.EndVertical();
+
+            LowSeperator();
+            EditorGUILayout.LabelField("-> Goals", _sidetitleLabelStyle);
+
+            if (_goalsList != null)
+            {
+
+                for (int i = 0; i < _goalsList.Count; i++)
+                {
+                    _goalsList[i].entityType = (EntitiesEnum)EditorGUILayout.EnumPopup("Obj Tipi", _goalsList[i].entityType);
+                    _goalsList[i].entityCount = EditorGUILayout.IntSlider("Obj Sayısı", _goalsList[i].entityCount, 1, _row * _col);
+
+                    if (GUILayout.Button("Sil", _cellStyle))
+                    {
+                        _goalsList.RemoveAt(i);
+                        GUI.FocusControl(null); // Düzenleyici penceresinin düzgün çalışması için odaklanmayı sıfırla
+                    }
+                }
+
+                // Yeni bir hedef ekleme butonu
+                if (GUILayout.Button("Yeni Hedef Ekle"))
+                {
+                    _goalsList.Add(new LevelGoals());
+                }
+
+                // Hedefleri kaydetme butonu
+                if (GUILayout.Button("Hedefleri Kaydet"))
+                {
+                    Kaydet();
+                }
+            }
+
             #endregion
 
             Seperator();
@@ -133,32 +204,34 @@ namespace Editor
             {
                 _backupSelectedLevel = _selectedLevel;
                 ClearArea();
+                _goalsList = new();
 
                 if (_selectedLevel > 0)
                 {
                     _level = GetLevel();
 
-                    if (_level.LevelEntities.EntitiesList.Count == _row * _col)
+                    if (_level.LevelFeatures.EntitiesList.Count == _row * _col)
                     {
                         LoadMainCellTexturesFromLevels();
+                        LoadLevelFeaturesFromLevels();
                     }
                     else // calculate level's data's count
                     {
-                        int value = (_row * _col) - _level.LevelEntities.EntitiesList.Count;
+                        int value = (_row * _col) - _level.LevelFeatures.EntitiesList.Count;
 
                         #region if count of level's data is less or more than grid size then fix it
                         if (value > 0) // increase level's data
                         {
                             for (int i = 0; i < value; i++)
                             {
-                                _level.LevelEntities.EntitiesList.Add(new());
+                                _level.LevelFeatures.EntitiesList.Add(new());
                             }
                         }
                         else // decrease level's data
                         {
                             for (int i = 0; i < -value; i++)
                             {
-                                _level.LevelEntities.EntitiesList.RemoveAt(_level.LevelEntities.EntitiesList.Count - 1);
+                                _level.LevelFeatures.EntitiesList.RemoveAt(_level.LevelFeatures.EntitiesList.Count - 1);
                             }
                         }
                     }
@@ -166,6 +239,34 @@ namespace Editor
                 }
             }
             #endregion
+        }
+
+        private void LoadLevelFeaturesFromLevels()
+        {
+            AllowedCandies allowedCandies = _level.LevelFeatures.AllowedCandies;
+            _candy1 = allowedCandies.Candy1;
+            _candy2 = allowedCandies.Candy2;
+            _candy3 = allowedCandies.Candy3;
+            _candy4 = allowedCandies.Candy4;
+
+            //_goalsList.Clear();
+            _goalsList.AddRange(_level.LevelFeatures.LevelGoals);
+
+        }
+
+        private void Kaydet()
+        {
+            if (_selectedLevel <= 0) return;
+
+            _level.LevelFeatures.LevelGoals?.Clear();
+            _level.LevelFeatures.LevelGoals.AddRange(_goalsList);
+        }
+        private void ClearLevelFeatures()
+        {
+            ClearAllows();
+            _level.LevelFeatures.AllowedCandies.ClearAllows();
+            _goalsList.Clear();
+            Kaydet();
         }
 
         private void FillGrid()
@@ -178,7 +279,7 @@ namespace Editor
 
                 if (_selectedLevel <= 0) continue; // if selected level zero (choose level)
 
-                _level.LevelEntities.EntitiesList[i].SetFeatures(_objectsTypes[1], false);
+                _level.LevelFeatures.EntitiesList[i].SetFeatures(_objectsTypes[1], false);
             }
         }
 
@@ -205,11 +306,11 @@ namespace Editor
         {
             for (int i = 0; i < _row * _col; i++)
             {
-                if (_level.LevelEntities.EntitiesList[i].EntityType != 0)
+                if (_level.LevelFeatures.EntitiesList[i].EntityType != 0)
                 {
                     for (int j = 0; j < _texturesAndModels.ObjectDatas.Length; j++)
                     {
-                        if (_texturesAndModels.ObjectDatas[j].EntityType == _level.LevelEntities.EntitiesList[i].EntityType)
+                        if (_texturesAndModels.ObjectDatas[j].EntityType == _level.LevelFeatures.EntitiesList[i].EntityType)
                         {
                             _cellsTextures[i] = _texturesAndModels.ObjectDatas[j].TextureData;
                             break;
@@ -267,6 +368,11 @@ namespace Editor
             _titleLabelStyle.normal.textColor = Color.white;
             _titleLabelStyle.fontSize = 18;
             _titleLabelStyle.alignment = TextAnchor.MiddleCenter;
+
+            _sidetitleLabelStyle = new GUIStyle();
+            _sidetitleLabelStyle.normal.textColor = Color.white;
+            _sidetitleLabelStyle.fontSize = 15;
+            _sidetitleLabelStyle.alignment = TextAnchor.MiddleLeft;
         }
         private void HandleOnClickedAnyCell()
         {
@@ -276,11 +382,11 @@ namespace Editor
 
             if (_objectsTextures[_selectedTexture] != null) // any object selected
             {
-                _level.LevelEntities.EntitiesList[_selectedCell].SetFeatures(_objectsTypes[_selectedTexture], _isStatic);
+                _level.LevelFeatures.EntitiesList[_selectedCell].SetFeatures(_objectsTypes[_selectedTexture], _isStatic);
             }
             else
             {
-                _level.LevelEntities.EntitiesList[_selectedCell].Reset();
+                _level.LevelFeatures.EntitiesList[_selectedCell].Reset();
 
             }
         }
@@ -308,6 +414,13 @@ namespace Editor
                 _objectsTypes.Add(_texturesAndModels.ObjectDatas[i].EntityType);
 
             }
+        }
+        private void ClearAllows()
+        {
+            _candy1 = false;
+            _candy2 = false;
+            _candy3 = false;
+            _candy4 = false;
         }
     }
 }

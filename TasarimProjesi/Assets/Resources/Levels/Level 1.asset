@@ -12,167 +12,173 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48751d95f389467498dae9409c362c58, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  LevelEntities:
+  LevelFeatures:
     EntitiesList:
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 20
-      IsStatic: 1
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
-    - EntityType: 10
+    - EntityType: 0
       IsStatic: 0
+    - EntityType: 0
+      IsStatic: 0
+    - EntityType: 0
+      IsStatic: 0
+    - EntityType: 0
+      IsStatic: 0
+    - EntityType: 0
+      IsStatic: 0
+    - EntityType: 0
+      IsStatic: 0
+    AllowedCandies:
+      Candy1: 0
+      Candy2: 0
+      Candy3: 0
+      Candy4: 0
+    LevelGoals: []

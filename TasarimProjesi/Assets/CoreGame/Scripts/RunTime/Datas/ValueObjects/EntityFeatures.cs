@@ -9,9 +9,9 @@ namespace RunTime.Datas.ValueObjects
         public EntitiesEnum EntityType;
         public bool IsStatic;
 
-        public void SetFeatures(EntitiesEnum EntityTpye, bool IsStatic)
+        public void SetFeatures(EntitiesEnum EntityType, bool IsStatic)
         {
-            this.EntityType = EntityTpye;
+            this.EntityType = EntityType;
             this.IsStatic = IsStatic;
         }
         public void Reset()

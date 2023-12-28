@@ -7,13 +7,13 @@ namespace RunTime.Datas.UnityObjects
 
     public class CD_Level : ScriptableObject
     {
-        public LevelEntities LevelEntities;
+        public LevelFeatures LevelFeatures;
 
         public void Reset()
         {
-            for (int i = 0; i < LevelEntities.EntitiesList.Count; i++)
+            for (int i = 0; i < LevelFeatures.EntitiesList.Count; i++)
             {
-                LevelEntities.EntitiesList[i].Reset();
+                LevelFeatures.EntitiesList[i].Reset();
             }
         }
     }

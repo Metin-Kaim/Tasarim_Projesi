@@ -3,6 +3,8 @@ using RunTime.Abstracts.Entities;
 using RunTime.Datas.UnityObjects;
 using RunTime.Enums;
 using RunTime.Handlers;
+using RunTime.Signals;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -15,15 +17,40 @@ namespace RunTime.Controllers
         [SerializeField] private GameObject[] entitiesArray;
 
         private int _totalObjectCount;
-
+        private List<GameObject> _spawnableObjects;
+        private CD_Level _level;
         private void Awake()
         {
             _totalObjectCount = entitiesArray.Count(x => x.CompareTag("Candy"));
+            _spawnableObjects = new();
+        }
+
+        private void Start()
+        {
+            _level = LevelSignals.Instance.onGetCurrentLevel();
+
+            if (_level.LevelFeatures.AllowedCandies.Candy1)
+            {
+                _spawnableObjects.Add(entitiesArray[0]);
+            }
+            if (_level.LevelFeatures.AllowedCandies.Candy2)
+            {
+                _spawnableObjects.Add(entitiesArray[1]);
+            }
+            if (_level.LevelFeatures.AllowedCandies.Candy3)
+            {
+                _spawnableObjects.Add(entitiesArray[2]);
+            }
+            if (_level.LevelFeatures.AllowedCandies.Candy4)
+            {
+                _spawnableObjects.Add(entitiesArray[3]);
+            }
+            
         }
 
         public void SpawnObject(TileHandler currentTile)
         {
-            GameObject newObject = Instantiate(entitiesArray[Random.Range(0, _totalObjectCount)], currentTile.transform);
+            GameObject newObject = Instantiate(_spawnableObjects[Random.Range(0, _spawnableObjects.Count)], currentTile.transform);
             SetObjectFeatures(currentTile, newObject, true);
         }
         public void SpawnObject(TileHandler currentTile, EntitiesEnum objectType)

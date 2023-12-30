@@ -8,6 +8,7 @@ namespace RunTime.Managers
     {
         [SerializeField] GoalSpawnController goalSpawnController;
         [SerializeField] GoalCheckController goalCheckController;
+        [SerializeField] UIController uiController;
 
         private void OnEnable()
         {
@@ -18,11 +19,13 @@ namespace RunTime.Managers
         {
             UISignals.Instance.onSpawnNewGoal += goalSpawnController.SpawnNewGoal;
             UISignals.Instance.onCheckGoals += goalCheckController.CheckAllGoals;
+            UISignals.Instance.onOpenWinPanel += uiController.OpenWinPanel;
         }
         private void UnSubscribeEvents()
         {
             UISignals.Instance.onSpawnNewGoal -= goalSpawnController.SpawnNewGoal;
             UISignals.Instance.onCheckGoals -= goalCheckController.CheckAllGoals;
+            UISignals.Instance.onOpenWinPanel -= uiController.OpenWinPanel;
         }
 
         private void OnDisable()

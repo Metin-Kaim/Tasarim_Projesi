@@ -88,10 +88,11 @@ namespace RunTime.Abstracts.Entities
             _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarýný al
 
             float time = 0;
+            bool isLevelDone = false;
 
             if (_chosenCandies.Count > 1)
             {
-                UISignals.Instance.onCheckGoals?.Invoke(_chosenCandies);
+                isLevelDone = (bool)UISignals.Instance.onCheckGoals?.Invoke(_chosenCandies);
 
                 foreach (var item in _chosenCandies)
                 {
@@ -114,7 +115,8 @@ namespace RunTime.Abstracts.Entities
                 time = .2f;
                 GridSignals.Instance.onScanGrid?.Invoke();
             }
-            InputSignals.Instance.onEnableTouch?.Invoke(time);
+            if (!isLevelDone)
+                InputSignals.Instance.onEnableTouch?.Invoke(time);
         }
 
         private void CheckLastTileForSpecialObject()
@@ -152,7 +154,7 @@ namespace RunTime.Abstracts.Entities
 
             return _chosenCandies;
         }
-        
+
         public abstract void CheckOtherDirections(int x, int y, List<List<int>> chosenCandies);
         protected void FallUpperCandies(List<List<int>> chosenCandies)
         {

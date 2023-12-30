@@ -17,7 +17,7 @@ namespace RunTime.Controllers
             _tileHandlers = GridSignals.Instance.onGetTileHandlers.Invoke();
         }
 
-        public void CheckAllGoals(List<List<int>> chosenCandies)
+        public bool CheckAllGoals(List<List<int>> chosenCandies)
         {
             foreach (List<int> candy in chosenCandies)
             {
@@ -42,8 +42,11 @@ namespace RunTime.Controllers
             }
             if(isLevelDone)
             {
-                CoreGameSignals.Instance.onNextLevel?.Invoke();
+                InputSignals.Instance.onDisableTouch?.Invoke();
+                UISignals.Instance.onOpenWinPanel?.Invoke();
             }
+
+            return isLevelDone;
         }
     }
 }

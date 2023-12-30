@@ -1,4 +1,5 @@
 ﻿using RunTime.Enums;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,6 +23,8 @@ namespace RunTime.Signals
         #endregion
 
         public UnityAction<Sprite, EntitiesEnum, int> onSpawnNewGoal;
-        public UnityAction<List<List<int>>> onCheckGoals;
+        public Func<List<List<int>>,bool> onCheckGoals;
+        public UnityAction onOpenWinPanel;
+
     }
 }

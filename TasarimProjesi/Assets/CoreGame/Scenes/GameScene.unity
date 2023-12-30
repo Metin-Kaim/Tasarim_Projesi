@@ -631,6 +631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6a9c2e3537c5041adb7cd5359a463b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winPanel: {fileID: 2423826713153880737, guid: 569df77122446274d8c16f9be66920f8, type: 3}
+  gameCanvas: {fileID: 1500828696}
 --- !u!114 &1500828698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalSpawnController: {fileID: 15622400}
   goalCheckController: {fileID: 15622399}
+  uiController: {fileID: 1500828697}
 --- !u!1 &1767321598
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using RunTime.Signals;
+﻿using DG.Tweening;
+using RunTime.Signals;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,14 +19,19 @@ namespace RunTime.Controllers
         }
         public void OpenFailPanel()
         {
-            StartCoroutine(OpenPanels(failPanel,CoreGameSignals.Instance.onFailLevel));
+            StartCoroutine(OpenPanels(failPanel, CoreGameSignals.Instance.onFailLevel));
         }
 
         IEnumerator OpenPanels(GameObject panel, UnityAction action)
         {
-            yield return new WaitForSeconds(1);
             GameObject newPanel = Instantiate(panel, gameCanvas);
-            newPanel.GetComponentInChildren<Button>().onClick.AddListener(action);
+            Image spriteRenderer = newPanel.GetComponent<Image>();
+            spriteRenderer.DOFade(0, 1).From().OnComplete(() =>
+            {
+                //yield return new WaitForSeconds(1);
+                newPanel.GetComponentInChildren<Button>().onClick.AddListener(action);
+            });
+            yield return null;
         }
     }
 }

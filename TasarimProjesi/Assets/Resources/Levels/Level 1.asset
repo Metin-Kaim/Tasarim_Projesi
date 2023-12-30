@@ -186,3 +186,5 @@ MonoBehaviour:
       entityCount: 10
     - entityType: 11
       entityCount: 12
+    LevelMoveCount:
+      MoveCount: 10

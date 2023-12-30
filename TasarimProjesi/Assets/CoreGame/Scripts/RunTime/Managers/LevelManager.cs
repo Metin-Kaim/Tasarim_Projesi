@@ -32,6 +32,7 @@ namespace RunTime.Managers
         private void OnFailLevel()
         {
             Debug.Log("Level Failed");
+            SceneManager.LoadScene(0);
         }
 
         private void OnNextLevel()

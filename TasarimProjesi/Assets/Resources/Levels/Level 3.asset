@@ -12,5 +12,179 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48751d95f389467498dae9409c362c58, type: 3}
   m_Name: Level 3
   m_EditorClassIdentifier: 
-  LevelEntities:
-    ObjectsList: 
+  LevelFeatures:
+    EntitiesList:
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 25
+      IsStatic: 1
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 20
+      IsStatic: 1
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 20
+      IsStatic: 1
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    AllowedCandies:
+      Candy1: 1
+      Candy2: 0
+      Candy3: 1
+      Candy4: 1
+    LevelGoals:
+    - entityType: 10
+      entityCount: 35
+    - entityType: 13
+      entityCount: 30
+    LevelMoveCount:
+      MoveCount: 15

@@ -9,5 +9,6 @@ namespace RunTime.Datas.ValueObjects
         public List<EntityFeatures> EntitiesList;
         public AllowedCandies AllowedCandies;
         public List<LevelGoals> LevelGoals;
+        public LevelMoveCount LevelMoveCount;
     }
 }

@@ -23,8 +23,9 @@ namespace RunTime.Signals
         #endregion
 
         public UnityAction<Sprite, EntitiesEnum, int> onSpawnNewGoal;
-        public Func<List<List<int>>,bool> onCheckGoals;
+        public Func<List<List<int>>, bool> onCheckGoals;
         public UnityAction onOpenWinPanel;
-
+        public UnityAction onOpenFailPanel;
+        public Func<int, bool, bool> onAdjustMoveCount;
     }
 }

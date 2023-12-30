@@ -40,19 +40,7 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 25
+    - EntityType: 20
       IsStatic: 1
     - EntityType: 10
       IsStatic: 0
@@ -66,24 +54,6 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 25
       IsStatic: 1
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
-    - EntityType: 10
-      IsStatic: 0
     - EntityType: 10
       IsStatic: 0
     - EntityType: 10
@@ -124,6 +94,8 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
+    - EntityType: 25
+      IsStatic: 1
     - EntityType: 10
       IsStatic: 0
     - EntityType: 10
@@ -144,6 +116,34 @@ MonoBehaviour:
       IsStatic: 0
     - EntityType: 10
       IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 20
+      IsStatic: 1
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 10
+      IsStatic: 0
+    - EntityType: 20
+      IsStatic: 1
     - EntityType: 10
       IsStatic: 0
     - EntityType: 10
@@ -188,3 +188,5 @@ MonoBehaviour:
       entityCount: 15
     - entityType: 12
       entityCount: 20
+    LevelMoveCount:
+      MoveCount: 10

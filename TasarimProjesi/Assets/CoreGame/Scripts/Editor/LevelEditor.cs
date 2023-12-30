@@ -4,6 +4,7 @@ using RunTime.Datas.ValueObjects;
 using RunTime.Enums;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using UnityEditor;
 using UnityEngine;
 
@@ -39,6 +40,7 @@ namespace Editor
         private bool _candy3;
         private bool _candy4;
         private List<LevelGoals> _goalsList;
+        private int _moveCount;
 
 
         [MenuItem("Tools/Level Editor")]
@@ -156,6 +158,20 @@ namespace Editor
                 }
             }
 
+            LowSeperator();
+
+            EditorGUILayout.LabelField("-> Move Count", _sidetitleLabelStyle);
+
+            EditorGUI.BeginChangeCheck();
+            _moveCount = EditorGUILayout.IntSlider("Move Count", _moveCount, 1, 99);
+            if (EditorGUI.EndChangeCheck())
+            {
+                if (_selectedLevel > 0)
+                {
+                    _level.LevelFeatures.LevelMoveCount.MoveCount = _moveCount;
+                }
+            }
+
             #endregion
 
             Seperator();
@@ -251,6 +267,8 @@ namespace Editor
 
             //_goalsList.Clear();
             _goalsList.AddRange(_level.LevelFeatures.LevelGoals);
+
+            _moveCount = _level.LevelFeatures.LevelMoveCount.MoveCount;
 
         }
 

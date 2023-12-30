@@ -88,11 +88,13 @@ namespace RunTime.Abstracts.Entities
             _chosenCandies.Add(new List<int> { Row, Column }); // secilen ilk sekerin koordinatlarýný al
 
             float time = 0;
-            bool isLevelDone = false;
-
+            bool areGoalsDone = false;
+            bool isMoveCountDone = false;
             if (_chosenCandies.Count > 1)
             {
-                isLevelDone = (bool)UISignals.Instance.onCheckGoals?.Invoke(_chosenCandies);
+                areGoalsDone = (bool)UISignals.Instance.onCheckGoals?.Invoke(_chosenCandies);
+
+                isMoveCountDone = (bool)UISignals.Instance.onAdjustMoveCount?.Invoke(-1, areGoalsDone);
 
                 foreach (var item in _chosenCandies)
                 {
@@ -115,7 +117,7 @@ namespace RunTime.Abstracts.Entities
                 time = .2f;
                 GridSignals.Instance.onScanGrid?.Invoke();
             }
-            if (!isLevelDone)
+            if (!areGoalsDone && !isMoveCountDone)
                 InputSignals.Instance.onEnableTouch?.Invoke(time);
         }
 

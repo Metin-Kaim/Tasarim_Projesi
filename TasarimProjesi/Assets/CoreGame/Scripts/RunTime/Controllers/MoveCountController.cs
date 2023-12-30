@@ -25,7 +25,6 @@ namespace RunTime.Controllers
 
             if (_moveCount <= 0 && !isWin)
             {
-                //InputSignals.Instance.onDisableTouch?.Invoke();
                 UISignals.Instance.onOpenFailPanel?.Invoke();
                 return true;
             }

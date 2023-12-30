@@ -42,7 +42,6 @@ namespace RunTime.Controllers
             }
             if(isLevelDone)
             {
-                //InputSignals.Instance.onDisableTouch?.Invoke();
                 UISignals.Instance.onOpenWinPanel?.Invoke();
             }
 

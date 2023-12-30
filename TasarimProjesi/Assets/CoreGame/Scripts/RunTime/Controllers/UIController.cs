@@ -26,11 +26,14 @@ namespace RunTime.Controllers
         {
             GameObject newPanel = Instantiate(panel, gameCanvas);
             Image spriteRenderer = newPanel.GetComponent<Image>();
-            spriteRenderer.DOFade(0, 1).From().OnComplete(() =>
+            Button button = newPanel.GetComponentInChildren<Button>();
+            button.interactable = false;
+            spriteRenderer.DOFade(1, 1.5f).From(0).OnComplete(() =>
             {
-                //yield return new WaitForSeconds(1);
-                newPanel.GetComponentInChildren<Button>().onClick.AddListener(action);
+                button.onClick.AddListener(action);
+                button.interactable = true;
             });
+            
             yield return null;
         }
     }

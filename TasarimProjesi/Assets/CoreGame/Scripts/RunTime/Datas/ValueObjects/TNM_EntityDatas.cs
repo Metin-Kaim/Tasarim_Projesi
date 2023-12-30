@@ -15,6 +15,7 @@ namespace RunTime.Datas.ValueObjects
     {
         public EntitiesEnum EntityType;
         public Texture TextureData;
+        public Sprite SpriteData;
         public GameObject EntityData;
     }
 }

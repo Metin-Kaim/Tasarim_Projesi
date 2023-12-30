@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿//TODO:: FIX IT
+using DG.Tweening;
 using RunTime.Abstracts.Entities;
 using RunTime.Datas.UnityObjects;
 using RunTime.Enums;
@@ -16,20 +17,22 @@ namespace RunTime.Controllers
         [SerializeField] private GameObject tilePrefab;
         [SerializeField] private GameObject[] entitiesArray;
 
-        private int _totalObjectCount;
+        //private int _totalObjectCount;
         private List<GameObject> _spawnableObjects;
         private CD_Level _level;
+        private CD_TexturesAndModels _cd_TexturesAndModels;
         private void Awake()
         {
-            _totalObjectCount = entitiesArray.Count(x => x.CompareTag("Candy"));
+            //_totalObjectCount = entitiesArray.Count(x => x.CompareTag("Candy"));
             _spawnableObjects = new();
+            _cd_TexturesAndModels = Resources.Load<CD_TexturesAndModels>("TexturesAndModels/TexturesAndModels");
         }
 
-        private void Start()
+        private void Start() //Fix it
         {
             _level = LevelSignals.Instance.onGetCurrentLevel();
 
-            if (_level.LevelFeatures.AllowedCandies.Candy1)
+            if (_level.LevelFeatures.AllowedCandies.Candy1) // make it a list
             {
                 _spawnableObjects.Add(entitiesArray[0]);
             }
@@ -45,7 +48,17 @@ namespace RunTime.Controllers
             {
                 _spawnableObjects.Add(entitiesArray[3]);
             }
-            
+
+            int goalCount = _level.LevelFeatures.LevelGoals.Count;
+            for (int i = 0; i < goalCount; i++)
+            {
+                Datas.ValueObjects.LevelGoals levelGoals = _level.LevelFeatures.LevelGoals[i];
+                Datas.ValueObjects.TNM_EntityDatas tNM_EntityDatas = _cd_TexturesAndModels.ObjectDatas.FirstOrDefault(x => x.EntityType == levelGoals.entityType);
+
+                UISignals.Instance.onSpawnNewGoal?.Invoke
+                    (tNM_EntityDatas.SpriteData, tNM_EntityDatas.EntityType,
+                     levelGoals.entityCount);
+            }
         }
 
         public void SpawnObject(TileHandler currentTile)
@@ -55,9 +68,10 @@ namespace RunTime.Controllers
         }
         public void SpawnObject(TileHandler currentTile, EntitiesEnum objectType)
         {
-            GameObject newObject = Instantiate(entitiesArray.FirstOrDefault(x => x.GetComponent<AbsEntity>().EntityType == objectType), currentTile.transform);
+            GameObject newObject = Instantiate(_cd_TexturesAndModels.ObjectDatas.FirstOrDefault(x => x.EntityType == objectType).EntityData, currentTile.transform);
             SetObjectFeatures(currentTile, newObject, false);
         }
+
         private void SetObjectFeatures(TileHandler currentTile, GameObject newObject, bool isAnim)
         {
             AbsEntity absEntity = newObject.GetComponent<AbsEntity>();

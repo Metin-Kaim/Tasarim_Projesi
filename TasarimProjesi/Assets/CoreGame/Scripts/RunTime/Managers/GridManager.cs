@@ -24,7 +24,7 @@ namespace RunTime.Managers
             GridSignals.Instance.onScanGrid += scanController.ScanForCombo;
         }
 
-        private void UnSibscribeEvents()
+        private void UnSubscribeEvents()
         {
             GridSignals.Instance.onGetTileHandlers -= () => gridController.TileHandlersArray;
             GridSignals.Instance.onGetGridSize -= () => gridController.GetGridSize;
@@ -34,7 +34,7 @@ namespace RunTime.Managers
         }
         private void OnDisable()
         {
-            UnSibscribeEvents();
+            UnSubscribeEvents();
         }
     }
 }

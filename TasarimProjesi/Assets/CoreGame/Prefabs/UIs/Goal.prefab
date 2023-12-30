@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3796101984359917812}
+  - component: {fileID: -1006862425312578272}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -37,6 +38,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.2377, y: 265.4174}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &-1006862425312578272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508186851629249712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8f0cc116810804f9f71780204eaac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 4340499396222246273}
+  goalAmountText: {fileID: 6905424986697634924}
 --- !u!1 &3459460680578061484
 GameObject:
   m_ObjectHideFlags: 0

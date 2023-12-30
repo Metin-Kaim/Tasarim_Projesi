@@ -35,7 +35,7 @@ namespace RunTime.Managers
 
         private void OnNextLevel()
         {
-            CurrentLevelIndex++;
+            //CurrentLevelIndex++;
             Debug.Log("Level Succeded");
         }
 

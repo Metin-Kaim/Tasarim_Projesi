@@ -91,6 +91,8 @@ namespace RunTime.Abstracts.Entities
 
             if (_chosenCandies.Count > 1)
             {
+                UISignals.Instance.onCheckGoals?.Invoke(_chosenCandies);
+
                 foreach (var item in _chosenCandies)
                 {
                     TileHandler currentTile = tileHandlersArray[item[0], item[1]];
@@ -106,6 +108,7 @@ namespace RunTime.Abstracts.Entities
                 tempCandies.AddRange(_chosenCandies);
 
                 IsCheckedCleaner();
+
                 FallUpperCandies(tempCandies);
                 SpawnNewCandies(tempCandies);
                 time = .2f;

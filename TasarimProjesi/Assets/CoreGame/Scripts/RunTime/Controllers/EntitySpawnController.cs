@@ -50,11 +50,11 @@ namespace RunTime.Controllers
             }
 
             int goalCount = _level.LevelFeatures.LevelGoals.Count;
+            print(goalCount);
             for (int i = 0; i < goalCount; i++)
             {
                 Datas.ValueObjects.LevelGoals levelGoals = _level.LevelFeatures.LevelGoals[i];
                 Datas.ValueObjects.TNM_EntityDatas tNM_EntityDatas = _cd_TexturesAndModels.ObjectDatas.FirstOrDefault(x => x.EntityType == levelGoals.entityType);
-
                 UISignals.Instance.onSpawnNewGoal?.Invoke
                     (tNM_EntityDatas.SpriteData, tNM_EntityDatas.EntityType,
                      levelGoals.entityCount);

@@ -209,11 +209,10 @@ namespace Editor
                 if (_selectedLevel > 0)
                 {
                     _level = GetLevel();
-
+                    LoadLevelFeaturesFromLevels();
                     if (_level.LevelFeatures.EntitiesList.Count == _row * _col)
                     {
                         LoadMainCellTexturesFromLevels();
-                        LoadLevelFeaturesFromLevels();
                     }
                     else // calculate level's data's count
                     {
@@ -234,8 +233,9 @@ namespace Editor
                                 _level.LevelFeatures.EntitiesList.RemoveAt(_level.LevelFeatures.EntitiesList.Count - 1);
                             }
                         }
+                        #endregion
                     }
-                    #endregion
+
                 }
             }
             #endregion

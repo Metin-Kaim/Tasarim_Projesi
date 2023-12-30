@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using RunTime.Signals;
 using RunTime.Datas.UnityObjects;
+using UnityEngine.SceneManagement;
 
 namespace RunTime.Managers
 {
@@ -35,8 +36,9 @@ namespace RunTime.Managers
 
         private void OnNextLevel()
         {
-            //CurrentLevelIndex++;
+            CurrentLevelIndex++;
             Debug.Log("Level Succeded");
+            SceneManager.LoadScene(0);
         }
 
         private CD_Level OnGetCurrentLevel()
